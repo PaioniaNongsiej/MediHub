@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <link href='https://unpkg.com/css.gg@2.0.0/icons/css/unsplash.css' rel='stylesheet'/>
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 
     <style>
         html, body, h1, h2, h3, h4, h5 {
@@ -68,7 +69,7 @@
             </div>
 
             <a onclick="myCategory()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn6">
-               <i class="fas fa-clone"></i> Category <i class="fa fa-caret-down"></i>
+               <i class="fa fa-bars fa-fw "></i> Category <i class="fa fa-caret-down"></i>
             </a>
             <div id="category" class="w3-bar-block w3-hide w3-padding-large w3-medium">
    
@@ -88,7 +89,7 @@
             </div>
             
             <a onclick="myOrder()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn4">
-               <i class="fas fa-chalkboard"></i> Orders <i class="fa fa-caret-down"></i>
+               <i class="fa fa-barcode fa-fw "></i> Orders <i class="fa fa-caret-down"></i>
             </a>
             <div id="order" class="w3-bar-block w3-hide w3-padding-large w3-medium">
    

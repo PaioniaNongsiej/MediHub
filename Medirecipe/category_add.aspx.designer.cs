@@ -24,6 +24,15 @@ namespace Medirecipe
         protected global::System.Web.UI.WebControls.TextBox category_name;
 
         /// <summary>
+        /// imagePreview control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image imagePreview;
+
+        /// <summary>
         /// first_file_upload_btn control.
         /// </summary>
         /// <remarks>
@@ -31,5 +40,14 @@ namespace Medirecipe
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload first_file_upload_btn;
+
+        /// <summary>
+        /// add_btn1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button add_btn1;
     }
 }

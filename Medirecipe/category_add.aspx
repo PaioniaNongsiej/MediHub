@@ -12,14 +12,22 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
      <link href='https://unpkg.com/css.gg@2.0.0/icons/css/unsplash.css' rel='stylesheet'/>
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
-    <script src="js/token.js"></script>
-    <script src="js/InsertForm.js"></script>
+     <link href='https://unpkg.com/css.gg@2.0.0/icons/css/unsplash.css' rel='stylesheet'/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>  
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>  
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>  
+   <%-- <script src="js/token.js"></script>--%>
+    <script src="~/js/InsertForm.js"></script>
 
-     <link rel="stylesheet" href="css/signup.css"/>
-    <link rel="stylesheet" href="css/InsertForm.css"/>
+     <link rel="stylesheet" href="~/css/signup.css"/>
+    <link rel="stylesheet" href="~/css/InsertForm.css"/>
     <style>
         html, body, h1, h2, h3, h4, h5 {
             font-family: "Raleway", sans-serif
+        }
+        .custom-file {
+            height: 169px;
+            width: 147px;
         }
     </style>
 
@@ -79,11 +87,12 @@
             </div>
 
              <a onclick="myCategory()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn6">
-              <div class="w3-bar-item w3-button w3-padding w3-blue"> <i class="fa fa-bookmark fa-fw"></i>Category <i class="fa fa-caret-down"></i></div>
+              <div class="w3-bar-item w3-button w3-padding w3-blue"> 
+              <i class="fa fa-bars fa-fw "></i>Category <i class="fa fa-caret-down"></i></div>
              </a>
             <div id="category" class="w3-bar-block w3-hide w3-padding-large w3-medium">
    
-                <a href="#" class="w3-bar-item w3-button">View Category</a>
+                <a href="category_table.aspx" class="w3-bar-item w3-button">View Category</a>
                 <a href="category_add.aspx" class="w3-bar-item w3-button,w3-bar-item w3-button w3-padding w3-blue">Add Category</a>
                 <a href="#" class="w3-bar-item w3-button">Alter Category</a>
             </div>
@@ -99,7 +108,7 @@
             </div>
             
             <a onclick="myOrder()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn4">
-               <i class="fas fa-chalkboard"></i> Orders <i class="fa fa-caret-down"></i>
+               <i class="fa fa-barcode fa-fw "></i> Orders <i class="fa fa-caret-down"></i>
             </a>
             <div id="order" class="w3-bar-block w3-hide w3-padding-large w3-medium">
    
@@ -113,7 +122,7 @@
             <div id="shipper" class="w3-bar-block w3-hide w3-padding-large w3-medium">
    
                 <a href="#" class="w3-bar-item w3-button">View Shippers</a>
-                <a href="#" class="w3-bar-item w3-button">Add Shipper</a>
+                <a href="shipper_add.aspx" class="w3-bar-item w3-button">Add Shipper</a>
                 <a href="#" class="w3-bar-item w3-button">Edit/Remove Shipper</a>
             </div>
 
@@ -192,15 +201,26 @@
             <br />
            <p style="text-align: left">Add Icon</p> 
            
-           <div class="upload_catalouge">
-                <asp:FileUpload ID="first_file_upload_btn" type="file" class="fileupload" runat="server"/>
-                <asp:Label  runat="server"  for="first-file-upload-btn" class="upload_image"></asp:Label>
-                
-            </div>
+            <div class="col-sm-3 col-md-3 col-xs-12">  
+                            <div class="form-group"> 
+                                <div class="custom-file">  
+                            <asp:Image ID="imagePreview" runat="server" CssClass="img-thumbnail" ImageUrl="~/images/default-avatar.png" Width="138px" Height="167px" />  
+                                    <br/>
+                                    <br/>
+                                    <label class="custom-file-label">  
+                                    <asp:FileUpload ID="first_file_upload_btn" runat="server" class="fileupload" onchange="ShowImagePreview(this);" Width="199px" />  
+                                    </label>  
+                                </div>  
+                            </div>  
+                        </div> 
         
 
     <div class="buttons">
-        <button class="btn" id="add_btn1" type="button">add category</button>
+        
+         <br />
+         <br />
+        
+         <asp:Button ID="add_btn1" class="btn" runat="server" Text="Add category" OnClick="btn_Click"/> 
         
     </div>
 
@@ -217,7 +237,7 @@
         <!-- End page content -->
     </div>
 
-    <script>
+    <script type="text/javascript">
         // Get the Sidebar
         var mySidebar = document.getElementById("mySidebar");
 
@@ -310,6 +330,16 @@
             mySidebar.style.display = "none";
             overlayBg.style.display = "none";
         }
+        //Image Upload Preview
+            function ShowImagePreview(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#imagePreview').prop('src', e.target.result);
+                };
+            reader.readAsDataURL(input.files[0]);
+            }
+        }  
     </script>
 
 </body>

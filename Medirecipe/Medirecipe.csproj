@@ -107,6 +107,190 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="assets\css\app-dark.min.html" />
+    <Content Include="assets\css\app-rtl.min.css" />
+    <Content Include="assets\css\app.min.css" />
+    <Content Include="assets\css\bootstrap.min.css" />
+    <Content Include="assets\css\icons.min.css" />
+    <Content Include="assets\fonts\dripicons-v2.svg" />
+    <Content Include="assets\fonts\fa-brands-400.html" />
+    <Content Include="assets\fonts\fa-brands-400.svg" />
+    <Content Include="assets\fonts\fa-regular-400.html" />
+    <Content Include="assets\fonts\fa-regular-400.svg" />
+    <Content Include="assets\fonts\fa-solid-900.html" />
+    <Content Include="assets\fonts\fa-solid-900.svg" />
+    <Content Include="assets\fonts\materialdesignicons-webfont3e71.html" />
+    <Content Include="assets\fonts\remixicondf6d.html" />
+    <Content Include="assets\fonts\remixicondf6d.svg" />
+    <Content Include="assets\images\auth.png" />
+    <Content Include="assets\images\authentication-bg.html" />
+    <Content Include="assets\images\brands\bitbucket.png" />
+    <Content Include="assets\images\brands\dribbble.png" />
+    <Content Include="assets\images\brands\dropbox.png" />
+    <Content Include="assets\images\brands\github.png" />
+    <Content Include="assets\images\brands\mail_chimp.png" />
+    <Content Include="assets\images\brands\slack.png" />
+    <Content Include="assets\images\comingsoon-bg.jpg" />
+    <Content Include="assets\images\comingsoon.png" />
+    <Content Include="assets\images\faq.png" />
+    <Content Include="assets\images\favicon.ico" />
+    <Content Include="assets\images\flags\germany.jpg" />
+    <Content Include="assets\images\flags\italy.jpg" />
+    <Content Include="assets\images\flags\russia.jpg" />
+    <Content Include="assets\images\flags\spain.jpg" />
+    <Content Include="assets\images\flags\us.jpg" />
+    <Content Include="assets\images\layouts\layout-1.jpg" />
+    <Content Include="assets\images\layouts\layout-2.jpg" />
+    <Content Include="assets\images\layouts\layout-3.jpg" />
+    <Content Include="assets\images\logo-dark.png" />
+    <Content Include="assets\images\logo-light.png" />
+    <Content Include="assets\images\logo-sm-dark.png" />
+    <Content Include="assets\images\logo-sm-light.png" />
+    <Content Include="assets\images\maintenance-bg.png" />
+    <Content Include="assets\images\overlay-1.png" />
+    <Content Include="assets\images\overlay-2.png" />
+    <Content Include="assets\images\pattern-bg.jpg" />
+    <Content Include="assets\images\small\img-1.jpg" />
+    <Content Include="assets\images\small\img-2.jpg" />
+    <Content Include="assets\images\small\img-3.jpg" />
+    <Content Include="assets\images\small\img-4.jpg" />
+    <Content Include="assets\images\small\img-5.jpg" />
+    <Content Include="assets\images\small\img-6.jpg" />
+    <Content Include="assets\images\small\img-7.jpg" />
+    <Content Include="assets\images\upgrade-img.png" />
+    <Content Include="assets\images\users\avatar-1.jpg" />
+    <Content Include="assets\images\users\avatar-2.jpg" />
+    <Content Include="assets\images\users\avatar-3.jpg" />
+    <Content Include="assets\images\users\avatar-4.jpg" />
+    <Content Include="assets\images\users\avatar-5.jpg" />
+    <Content Include="assets\images\users\avatar-6.jpg" />
+    <Content Include="assets\images\users\avatar-7.jpg" />
+    <Content Include="assets\images\users\avatar-8.jpg" />
+    <Content Include="assets\js\app.js" />
+    <Content Include="assets\js\layout.js" />
+    <Content Include="assets\js\pages\apexcharts-area.init.js" />
+    <Content Include="assets\js\pages\apexcharts-bar.init.js" />
+    <Content Include="assets\js\pages\apexcharts-boxplot.init.js" />
+    <Content Include="assets\js\pages\apexcharts-bubble.init.js" />
+    <Content Include="assets\js\pages\apexcharts-candlestick.init.js" />
+    <Content Include="assets\js\pages\apexcharts-column.init.js" />
+    <Content Include="assets\js\pages\apexcharts-heatmap.init.js" />
+    <Content Include="assets\js\pages\apexcharts-line.init.js" />
+    <Content Include="assets\js\pages\apexcharts-mixed.init.js" />
+    <Content Include="assets\js\pages\apexcharts-pie.init.js" />
+    <Content Include="assets\js\pages\apexcharts-polararea.init.js" />
+    <Content Include="assets\js\pages\apexcharts-radar.init.js" />
+    <Content Include="assets\js\pages\apexcharts-radialbar.init.js" />
+    <Content Include="assets\js\pages\apexcharts-scatter.init.js" />
+    <Content Include="assets\js\pages\apexcharts-timeline.init.js" />
+    <Content Include="assets\js\pages\apexcharts-treemap.init.js" />
+    <Content Include="assets\js\pages\calendar.init.js" />
+    <Content Include="assets\js\pages\coming-soon.init.js" />
+    <Content Include="assets\js\pages\dashboard.init.js" />
+    <Content Include="assets\js\pages\datatables.init.js" />
+    <Content Include="assets\js\pages\echarts.init.js" />
+    <Content Include="assets\js\pages\form-advanced.init.js" />
+    <Content Include="assets\js\pages\form-editor.init.js" />
+    <Content Include="assets\js\pages\form-element.init.js" />
+    <Content Include="assets\js\pages\form-validation.init.js" />
+    <Content Include="assets\js\pages\form-wizard.init.js" />
+    <Content Include="assets\js\pages\gmaps.init.js" />
+    <Content Include="assets\js\pages\lightbox.init.js" />
+    <Content Include="assets\js\pages\materialdesign.init.js" />
+    <Content Include="assets\js\pages\range-sliders.init.js" />
+    <Content Include="assets\js\pages\rating-init.js" />
+    <Content Include="assets\js\pages\remix-icons-list.js" />
+    <Content Include="assets\js\pages\roundslider.init.js" />
+    <Content Include="assets\js\pages\session-timeout.init.js" />
+    <Content Include="assets\js\pages\sweet-alerts.init.js" />
+    <Content Include="assets\js\pages\table-editable.init.js" />
+    <Content Include="assets\js\pages\toastr.init.js" />
+    <Content Include="assets\js\pages\vector-maps.init.js" />
+    <Content Include="assets\libs\%40curiosityx\bootstrap-session-timeout\index.js" />
+    <Content Include="assets\libs\%40fullcalendar\bootstrap\main.min.css" />
+    <Content Include="assets\libs\%40fullcalendar\bootstrap\main.min.js" />
+    <Content Include="assets\libs\%40fullcalendar\core\main.min.css" />
+    <Content Include="assets\libs\%40fullcalendar\core\main.min.js" />
+    <Content Include="assets\libs\%40fullcalendar\daygrid\main.min.css" />
+    <Content Include="assets\libs\%40fullcalendar\daygrid\main.min.js" />
+    <Content Include="assets\libs\%40fullcalendar\interaction\main.min.js" />
+    <Content Include="assets\libs\%40fullcalendar\timegrid\main.min.css" />
+    <Content Include="assets\libs\%40fullcalendar\timegrid\main.min.js" />
+    <Content Include="assets\libs\admin-resources\bootstrap-filestyle\bootstrap-filestyle.min.js" />
+    <Content Include="assets\libs\admin-resources\jquery.vectormap\jquery-jvectormap-1.2.2.css" />
+    <Content Include="assets\libs\admin-resources\jquery.vectormap\jquery-jvectormap-1.2.2.min.js" />
+    <Content Include="assets\libs\admin-resources\jquery.vectormap\maps\jquery-jvectormap-au-mill-en.js" />
+    <Content Include="assets\libs\admin-resources\jquery.vectormap\maps\jquery-jvectormap-ca-lcc-en.js" />
+    <Content Include="assets\libs\admin-resources\jquery.vectormap\maps\jquery-jvectormap-in-mill-en.js" />
+    <Content Include="assets\libs\admin-resources\jquery.vectormap\maps\jquery-jvectormap-uk-mill-en.js" />
+    <Content Include="assets\libs\admin-resources\jquery.vectormap\maps\jquery-jvectormap-us-il-chicago-mill-en.js" />
+    <Content Include="assets\libs\admin-resources\jquery.vectormap\maps\jquery-jvectormap-us-merc-en.js" />
+    <Content Include="assets\libs\admin-resources\jquery.vectormap\maps\jquery-jvectormap-world-mill-en.js" />
+    <Content Include="assets\libs\apexcharts\apexcharts.min.js" />
+    <Content Include="assets\libs\bootstrap-datepicker\css\bootstrap-datepicker.min.css" />
+    <Content Include="assets\libs\bootstrap-datepicker\js\bootstrap-datepicker.min.js" />
+    <Content Include="assets\libs\bootstrap-maxlength\bootstrap-maxlength.min.js" />
+    <Content Include="assets\libs\bootstrap-rating\bootstrap-rating.css" />
+    <Content Include="assets\libs\bootstrap-rating\bootstrap-rating.min.js" />
+    <Content Include="assets\libs\bootstrap-touchspin\jquery.bootstrap-touchspin.min.css" />
+    <Content Include="assets\libs\bootstrap-touchspin\jquery.bootstrap-touchspin.min.js" />
+    <Content Include="assets\libs\bootstrap\js\bootstrap.bundle.min.js" />
+    <Content Include="assets\libs\bs-custom-file-input\bs-custom-file-input.min.js" />
+    <Content Include="assets\libs\datatables.net-autoFill-bs4\css\autoFill.bootstrap4.min.html" />
+    <Content Include="assets\libs\datatables.net-bs4\css\dataTables.bootstrap4.min.css" />
+    <Content Include="assets\libs\datatables.net-bs4\js\dataTables.bootstrap4.min.js" />
+    <Content Include="assets\libs\datatables.net-buttons-bs4\css\buttons.bootstrap4.min.css" />
+    <Content Include="assets\libs\datatables.net-buttons-bs4\js\buttons.bootstrap4.min.js" />
+    <Content Include="assets\libs\datatables.net-buttons\js\buttons.colVis.min.js" />
+    <Content Include="assets\libs\datatables.net-buttons\js\buttons.html5.min.js" />
+    <Content Include="assets\libs\datatables.net-buttons\js\buttons.print.min.js" />
+    <Content Include="assets\libs\datatables.net-buttons\js\dataTables.buttons.min.js" />
+    <Content Include="assets\libs\datatables.net-keytable-bs4\css\keyTable.bootstrap4.min.css" />
+    <Content Include="assets\libs\datatables.net-keytable\js\dataTables.keyTable.min.js" />
+    <Content Include="assets\libs\datatables.net-responsive-bs4\css\responsive.bootstrap4.min.css" />
+    <Content Include="assets\libs\datatables.net-responsive-bs4\js\responsive.bootstrap4.min.js" />
+    <Content Include="assets\libs\datatables.net-responsive\js\dataTables.responsive.min.js" />
+    <Content Include="assets\libs\datatables.net-select-bs4\css\select.bootstrap4.min.css" />
+    <Content Include="assets\libs\datatables.net-select\js\dataTables.select.min.js" />
+    <Content Include="assets\libs\datatables.net\js\jquery.dataTables.min.js" />
+    <Content Include="assets\libs\dropzone\min\dropzone.min.css" />
+    <Content Include="assets\libs\dropzone\min\dropzone.min.js" />
+    <Content Include="assets\libs\echarts\echarts.min.js" />
+    <Content Include="assets\libs\gmaps\gmaps.min.js" />
+    <Content Include="assets\libs\ion-rangeslider\css\ion.rangeSlider.min.css" />
+    <Content Include="assets\libs\ion-rangeslider\js\ion.rangeSlider.min.js" />
+    <Content Include="assets\libs\jquery-countdown\jquery.countdown.min.js" />
+    <Content Include="assets\libs\jquery-ui-dist\jquery-ui.min.js" />
+    <Content Include="assets\libs\jquery\jquery.min.js" />
+    <Content Include="assets\libs\jsvectormap\css\jsvectormap.min.css" />
+    <Content Include="assets\libs\jsvectormap\js\jsvectormap.min.js" />
+    <Content Include="assets\libs\jsvectormap\maps\world-merc.js" />
+    <Content Include="assets\libs\jszip\jszip.min.js" />
+    <Content Include="assets\libs\magnific-popup\jquery.magnific-popup.min.js" />
+    <Content Include="assets\libs\magnific-popup\magnific-popup.css" />
+    <Content Include="assets\libs\masonry-layout\masonry.pkgd.min.js" />
+    <Content Include="assets\libs\metismenu\metisMenu.min.js" />
+    <Content Include="assets\libs\moment\min\moment.min.js" />
+    <Content Include="assets\libs\node-waves\waves.min.js" />
+    <Content Include="assets\libs\parsleyjs\parsley.min.js" />
+    <Content Include="assets\libs\pdfmake\build\pdfmake.min.js" />
+    <Content Include="assets\libs\pdfmake\build\vfs_fonts.js" />
+    <Content Include="assets\libs\round-slider\roundslider.min.css" />
+    <Content Include="assets\libs\round-slider\roundslider.min.js" />
+    <Content Include="assets\libs\select2\css\select2.min.css" />
+    <Content Include="assets\libs\select2\js\select2.min.js" />
+    <Content Include="assets\libs\simplebar\simplebar.min.js" />
+    <Content Include="assets\libs\spectrum-colorpicker2\spectrum.min.css" />
+    <Content Include="assets\libs\spectrum-colorpicker2\spectrum.min.js" />
+    <Content Include="assets\libs\sweetalert2\sweetalert2.min.css" />
+    <Content Include="assets\libs\sweetalert2\sweetalert2.min.js" />
+    <Content Include="assets\libs\table-edits\build\table-edits.min.js" />
+    <Content Include="assets\libs\tinymce\tinymce.min.js" />
+    <Content Include="assets\libs\toastr\build\toastr.min.css" />
+    <Content Include="assets\libs\toastr\build\toastr.min.js" />
+    <Content Include="assets\libs\twitter-bootstrap-wizard\jquery.bootstrap.wizard.min.js" />
+    <Content Include="assets\libs\twitter-bootstrap-wizard\prettify.css" />
+    <Content Include="assets\libs\twitter-bootstrap-wizard\prettify.js" />
     <Content Include="category_add.aspx" />
     <Content Include="category_table.aspx" />
     <Content Include="Contact.aspx" />
@@ -131,11 +315,37 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="assets\fonts\dripicons-v2.eot" />
+    <Content Include="assets\fonts\dripicons-v2.ttf" />
+    <Content Include="assets\fonts\dripicons-v2.woff" />
+    <Content Include="assets\fonts\dripicons-v2d41d.eot" />
+    <Content Include="assets\fonts\fa-brands-400.eot" />
+    <Content Include="assets\fonts\fa-brands-400.ttf" />
+    <Content Include="assets\fonts\fa-brands-400.woff" />
+    <Content Include="assets\fonts\fa-brands-400d41d.eot" />
+    <Content Include="assets\fonts\fa-regular-400.eot" />
+    <Content Include="assets\fonts\fa-regular-400.ttf" />
+    <Content Include="assets\fonts\fa-regular-400.woff" />
+    <Content Include="assets\fonts\fa-regular-400d41d.eot" />
+    <Content Include="assets\fonts\fa-solid-900.eot" />
+    <Content Include="assets\fonts\fa-solid-900.ttf" />
+    <Content Include="assets\fonts\fa-solid-900.woff" />
+    <Content Include="assets\fonts\fa-solid-900d41d.eot" />
+    <Content Include="assets\fonts\materialdesignicons-webfont3e71.eot" />
+    <Content Include="assets\fonts\materialdesignicons-webfont3e71.ttf" />
+    <Content Include="assets\fonts\materialdesignicons-webfont3e71.woff" />
+    <Content Include="assets\fonts\materialdesignicons-webfontd41d.eot" />
+    <Content Include="assets\fonts\remixicondf6d.eot" />
+    <Content Include="assets\fonts\remixicondf6d.ttf" />
+    <Content Include="assets\fonts\remixicondf6d.woff" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="homepage.aspx" />
+    <Content Include="homepages.aspx" />
     <Content Include="image\backgroud.jpg" />
     <Content Include="image\database_design.png" />
     <Content Include="image\db_design.png" />
+    <Content Include="image\delete.png" />
+    <Content Include="image\edit.png" />
     <Content Include="image\log.png" />
     <Content Include="image\logouser.png" />
     <Content Include="image\medi logo.jpg" />
@@ -173,7 +383,9 @@
     <Content Include="Scripts\WebForms\WebForms.js" />
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
+    <Content Include="shipper_add.aspx" />
     <Content Include="Site.Master" />
+    <Content Include="table_demo.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -227,6 +439,13 @@
     <Compile Include="homepage.aspx.designer.cs">
       <DependentUpon>homepage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="homepages.aspx.cs">
+      <DependentUpon>homepages.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="homepages.aspx.designer.cs">
+      <DependentUpon>homepages.aspx</DependentUpon>
+    </Compile>
     <Compile Include="product_add.aspx.cs">
       <DependentUpon>product_add.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -242,6 +461,13 @@
     <Compile Include="recipes_add.aspx.designer.cs">
       <DependentUpon>recipes_add.aspx</DependentUpon>
     </Compile>
+    <Compile Include="shipper_add.aspx.cs">
+      <DependentUpon>shipper_add.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="shipper_add.aspx.designer.cs">
+      <DependentUpon>shipper_add.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -251,12 +477,21 @@
     </Compile>
     <Compile Include="Site.Mobile.Master.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
+    <Compile Include="table_demo.aspx.cs">
+      <DependentUpon>table_demo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="table_demo.aspx.designer.cs">
+      <DependentUpon>table_demo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
@@ -264,6 +499,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="pictures\category\" />
+    <Folder Include="pictures\product\" />
+    <Folder Include="pictures\recipe\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

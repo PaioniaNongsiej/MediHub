@@ -19,36 +19,41 @@ sellingPrice.addEventListener('input', () => {
 })
 
 // upload image handle
-let uploadImages = document.querySelectorAll('.fileupload');
-let imagePaths = []; // will store all uploaded images paths;
+        //Image Upload Preview  
 
-uploadImages.forEach((fileupload, index) => {
-    fileupload.addEventListener('change', () => {
-        const file = fileupload.files[0];
-        let imageUrl;
+            
 
-        if (file.type.includes('image')) {
-            // means user uploaded an image
 
-        } else {
-            showAlert('upload image only');
-        }
-    })
-})
+//let uploadImages = document.querySelectorAll('.fileupload');
+//let imagePaths = []; // will store all uploaded images paths;
 
-if (file.type.includes('image')) {
-    // means user uploaded an image
-    fetch('/s3url').then(res => res.json())
-        .then(url => {
-            fetch(url, {
-                method: 'PUT',
-                headers: new Headers({ 'Content-Type': 'multipart/form-data' }),
-                body: file
-            }).then(res => {
-                console.log(url)
-            })
-        })
-}
+//uploadImages.forEach((fileupload, index) => {
+//    fileupload.addEventListener('change', () => {
+//        const file = fileupload.files[0];
+//        let imageUrl;
+
+//        if (file.type.includes('image')) {
+//            // means user uploaded an image
+
+//        } else {
+//            showAlert('upload image only');
+//        }
+//    })
+//})
+
+//if (file.type.includes('image')) {
+//    // means user uploaded an image
+//    fetch('/s3url').then(res => res.json())
+//        .then(url => {
+//            fetch(url, {
+//                method: 'PUT',
+//                headers: new Headers({ 'Content-Type': 'multipart/form-data' }),
+//                body: file
+//            }).then(res => {
+//                console.log(url)
+//            })
+//        })
+//}
 
 const validateForm = () => {
     if (!productName.value.length) {
@@ -65,10 +70,6 @@ const validateForm = () => {
         return showAlert('you must add pricings');
     } else if (stock.value < 20) {
         return showAlert('you should have at least 20 items in stock');
-    } else if (!tags.value.length) {
-        return showAlert('enter few tags to help ranking your product in search');
-    } else if (!tac.checked) {
-        return showAlert('you must agree to our terms and conditions');
     }
     return true;
 }

@@ -192,40 +192,69 @@
           <asp:TextBox ID="txtSearch" runat="server" class="txtSearch"></asp:TextBox>
           <asp:Button Text="Search" runat="server" OnClick="Search" Width="77px"/>
             <hr />
-            <asp:GridView ID="gvCustomers" runat="server" AutoGenerateColumns="False" AllowPaging="True"
-                OnPageIndexChanging="OnPaging"
-                CssClass="mydatagrid" PagerStyle-CssClass="pager"
-                HeaderStyle-CssClass="header" RowStyle-CssClass="rows" Height="229px" Width="517px" PageSize="5" OnSelectedIndexChanged="gvCustomers_SelectedIndexChanged">
-                <Columns>
-                    <asp:BoundField DataField="deptno" HeaderText="department_no" ItemStyle-Width="150" >
-<ItemStyle Width="150px"></ItemStyle>
-                    </asp:BoundField>
-                    <asp:BoundField DataField="dname" HeaderText="name" ItemStyle-Width="150" >
-<ItemStyle Width="150px"></ItemStyle>
-                    </asp:BoundField>
-                    <asp:BoundField DataField="loc" HeaderText="location" ItemStyle-Width="150" >
-<ItemStyle Width="150px"></ItemStyle>
-                    </asp:BoundField>
-                    <asp:ButtonField CommandName="Edit" HeaderText="Alter" ShowHeader="True" Text="Edit">
-                    <ControlStyle BackColor="#339933" />
-                    <ItemStyle Width="10px" />
-                    </asp:ButtonField>
-                    <asp:ButtonField CommandName="Delete" HeaderText="Delete" ShowHeader="True" Text="Delete" >
-                    <ControlStyle BackColor="#990000" />
-                    <ItemStyle Width="6px" />
-                    </asp:ButtonField>
-                </Columns>
-                <HeaderStyle CssClass="header" />
-                <PagerStyle CssClass="pager" />
-                <RowStyle CssClass="rows" />
-            </asp:GridView>
+        
+
+           <asp:ScriptManager ID="ScriptManager1" runat="server">
+    </asp:ScriptManager>
+			<asp:UpdatePanel ID="UpdatePanel1" runat="server">
+
+            <ContentTemplate>
+
+                <asp:GridView ID="gvCustomers" runat="server" AutoGenerateColumns="False" OnRowDataBound="OnRowDataBound"
+                    DataKeyNames="id" OnRowEditing="OnRowEditing" OnRowCancelingEdit="OnRowCancelingEdit"
+                    PageSize="5" AllowPaging="True"   OnPageIndexChanging="OnPaging" OnRowUpdating="OnRowUpdating" 
+                OnRowDeleting="OnRowDeleting" EmptyDataText="No records has been added." CssClass="table table-bordered table-hover display nowrap margin-top-7 w-p80 table-responsive" Width="1020px">
+                    <Columns>
+					
+                        <asp:TemplateField HeaderText="Name"   ItemStyle-Width="150" >
+                            <ItemTemplate>
+                                <asp:Label ID="lblName" runat="server"   Text='<%# Eval("category_name") %>'></asp:Label>
+
+                            </ItemTemplate>
+                            <EditItemTemplate>
+                                <asp:TextBox ID="txtName" runat="server" class="form-control"   autocomplete="off"  Text ='<%# Eval("category_name") %>' Width="140"></asp:TextBox>
+                            </EditItemTemplate>
+							 <HeaderStyle CssClass="bg-primary" />
+                            <ItemStyle Width="150px" />
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Icon" ItemStyle-Width="150">
+                            <ItemTemplate>
+                                <asp:Label ID="lblCountry" runat="server"  Text='<%# Eval("category_icon") %>'></asp:Label>
+                            </ItemTemplate>
+                            <EditItemTemplate>
+                                <asp:TextBox ID="txtLname" runat="server" class="form-control"   autocomplete="off"  Text='<%# Eval("category_icon") %>' Width="140"></asp:TextBox>
+                            </EditItemTemplate>
+							 <HeaderStyle CssClass="bg-primary" />
+                            <ItemStyle Width="150px" />
+                        </asp:TemplateField>
+                        
+						
+					
+						
+                        <asp:CommandField  HeaderText="Actions" ButtonType="Link" ShowEditButton="true" ShowDeleteButton="true" 
+                            ItemStyle-Width="150"  EditText="Edit" DeleteText="Del"
+CancelText="<i aria-hidden='true' class='glyphicon glyphicon-remove'></i>" UpdateText="<i aria-hidden='true' class='ti-check-box'></i>">
+									
+                        <ItemStyle Width="150px" />
+                        </asp:CommandField>
+                        <asp:ButtonField HeaderText="Edit" Text="Edit"/>
+									
+                    </Columns>
+					 <HeaderStyle CssClass="bg-danger" />
+                </asp:GridView>
+               
+            </ContentTemplate>
+
+        </asp:UpdatePanel>
+
+           
             </div>
    
     </form>
-
+ </div>
          <!-- Footer -->
              <div>
-                 </br>
+                 
             <p>Powered by  <a href="d" target="_blank">Medusind</a></p>
             </div>
         <div class="w3-container">

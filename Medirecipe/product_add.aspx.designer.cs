@@ -33,6 +33,24 @@ namespace Medirecipe
         protected global::System.Web.UI.WebControls.TextBox s_des;
 
         /// <summary>
+        /// l_des control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea l_des;
+
+        /// <summary>
+        /// imagePreview control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image imagePreview;
+
+        /// <summary>
         /// first_file_upload_btn control.
         /// </summary>
         /// <remarks>
@@ -40,33 +58,6 @@ namespace Medirecipe
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload first_file_upload_btn;
-
-        /// <summary>
-        /// second_file_upload_btn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload second_file_upload_btn;
-
-        /// <summary>
-        /// third_file_upload_btn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload third_file_upload_btn;
-
-        /// <summary>
-        /// fourth_file_upload_btn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload fourth_file_upload_btn;
 
         /// <summary>
         /// actual_price control.
@@ -105,12 +96,21 @@ namespace Medirecipe
         protected global::System.Web.UI.WebControls.TextBox stock;
 
         /// <summary>
-        /// DropDownList1 control.
+        /// category_ID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+        protected global::System.Web.UI.WebControls.DropDownList category_ID;
+
+        /// <summary>
+        /// add_btn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button add_btn;
     }
 }

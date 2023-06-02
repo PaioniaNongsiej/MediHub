@@ -12,14 +12,21 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
      <link href='https://unpkg.com/css.gg@2.0.0/icons/css/unsplash.css' rel='stylesheet'/>
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
-    <script src="js/token.js"></script>
-    <script src="js/InsertForm.js"></script>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>  
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>  
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>  
+   <%-- <script src="js/token.js"></script>--%>
+    <script src="~/js/InsertForm.js"></script>  
 
-     <link rel="stylesheet" href="css/signup.css"/>
-    <link rel="stylesheet" href="css/InsertForm.css"/>
+     <link rel="stylesheet" href="~/css/signup.css"/>
+    <link rel="stylesheet" href="~/css/InsertForm.css"/>
     <style>
         html, body, h1, h2, h3, h4, h5 {
             font-family: "Raleway", sans-serif
+        }
+        .custom-file {
+            height: 270px;
+            width: 248px;
         }
     </style>
 
@@ -80,11 +87,11 @@
             </div>
 
              <a onclick="myCategory()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn6">
-               <i class="fas fa-clone fa-fw"></i> Category <i class="fa fa-caret-down"></i>
+               <i class="fa fa-bars fa-fw "></i> Category <i class="fa fa-caret-down"></i>
             </a>
             <div id="category" class="w3-bar-block w3-hide w3-padding-large w3-medium">
    
-                <a href="#" class="w3-bar-item w3-button">View Category</a>
+                <a href="category_table.aspx" class="w3-bar-item w3-button">View Category</a>
                 <a href="category_add.aspx" class="w3-bar-item w3-button">Add Category</a>
                 <a href="#" class="w3-bar-item w3-button">Alter Category</a>
             </div>
@@ -100,7 +107,7 @@
             </div>
             
             <a onclick="myOrder()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn4">
-               <i class="fas fa-chalkboard"></i> Orders <i class="fa fa-caret-down"></i>
+               <i class="fa fa-barcode fa-fw "></i> Orders <i class="fa fa-caret-down"></i>
             </a>
             <div id="order" class="w3-bar-block w3-hide w3-padding-large w3-medium">
    
@@ -114,7 +121,7 @@
             <div id="shipper" class="w3-bar-block w3-hide w3-padding-large w3-medium">
    
                 <a href="#" class="w3-bar-item w3-button">View Shippers</a>
-                <a href="#" class="w3-bar-item w3-button">Add Shipper</a>
+                <a href="shipper_add.aspx" class="w3-bar-item w3-button">Add Shipper</a>
                 <a href="#" class="w3-bar-item w3-button">Edit/Remove Shipper</a>
             </div>
 
@@ -189,7 +196,7 @@
 
        <div class="form">
            
-           <asp:TextBox ID="product_name" class="w3-border w3-padding"  runat="server" placeholder="recipe name"></asp:TextBox>   
+           <asp:TextBox ID="recipe_name" class="w3-border w3-padding"  runat="server" placeholder="recipe name"></asp:TextBox>   
             <br />
             <br/>
            <asp:TextBox ID="serving" runat="server" class="w3-border w3-padding" type="integer" placeholder="Servings" ></asp:TextBox>
@@ -198,44 +205,46 @@
            <asp:TextBox ID="s_des" runat="server" class="w3-border w3-padding" placeholder="short line about the recipe(caption)" ></asp:TextBox>
              <br />
              <br/>
-           <textarea id="ingredient" rows="2" class="w3-border w3-padding,tarea" placeholder="ingredient"></textarea>
+           <textarea id="ingredient" runat="server" class="w3-border w3-padding,tarea" placeholder="ingredient"></textarea>
            <br />
              <br/>
-            <textarea id="l_des" rows="2" class="w3-border w3-padding,tarea" placeholder="detail description"></textarea>
+            <textarea id="l_des" runat="server" class="w3-border w3-padding,tarea" placeholder="detail description"></textarea>
            <br />
              <br/>
            
     <!-- recipe image -->
-    <div class="product_info">
+     <div class="product_info">
        
-        <div class="product_image"><p class="text">recipe image</p></div>
+        <%--<div class="product_image"><p class="text">product image</p></div>--%>
         <div class="upload_image_sec">
             <!-- upload inputs -->
-            <p class="text">
-                <img src="img/camera.png" alt="" />upload image</p>
-            <div class="upload_catalouge">
-                <asp:FileUpload ID="first_file_upload_btn" type="file" class="fileupload" runat="server"/>
-                <asp:Label  runat="server"  for="first-file-upload-btn" class="upload_image"></asp:Label>
-                
-                 <asp:FileUpload ID= "second_file_upload_btn" type="file" class="fileupload" runat="server"/>
-                 <asp:Label runat="server"  for="second_file_upload_btn" class="upload_image"></asp:Label>
-                
-                  <asp:FileUpload ID= "third_file_upload_btn" type="file" class="fileupload" runat="server"/>
-                 <asp:Label runat="server"  for="third_file_upload_btn" class="upload_image"></asp:Label>
-                
-                 <asp:FileUpload ID= "fourth_file_upload_btn" type="file" class="fileupload" runat="server"/>
-               <asp:Label runat="server" for="fourth_file_upload_btn" class="upload_image"></asp:Label>
-                
+            <p class="text">upload image</p>
+           <%-- <div class="upload_catalouge">--%>
+                <div class="col-sm-3 col-md-3 col-xs-12">  
+                            <div class="form-group"> 
+                                <div class="custom-file">  
+                            <asp:Image ID="imagePreview" runat="server" CssClass="img-thumbnail" ImageUrl="~/images/default-avatar.png" Width="157px" Height="191px" />  
+                                    <br/>
+                                    <br/>
+                                    <label class="custom-file-label">  
+                                    <asp:FileUpload ID="first_file_upload_btn" runat="server" class="fileupload"  onchange="ShowImagePreview(this);" />  
+                                    </label>  
+                                </div>  
+                            </div>  
+                        </div>
             </div>
         </div>
     </div>
 
     
     <div class="buttons">
-        <button class="btn" id="add_btn">add product</button>
+        <asp:Button ID="add_btn" class="btn" runat="server" Text="Add Recipe" OnClick="btn_Click"/>   
+        
+        <br />
+        <br />
         
     </div>
-    </div>
+    
     </form>
             
             <p>Powered by  <a href="#" target="_blank">Medusind</a></p>
@@ -248,7 +257,7 @@
         <!-- End page content -->
     </div>
 
-    <script>
+    <script  type="text/javascript">
         // Get the Sidebar
         var mySidebar = document.getElementById("mySidebar");
 
@@ -340,6 +349,17 @@
         function w3_close() {
             mySidebar.style.display = "none";
             overlayBg.style.display = "none";
+        }
+
+        //Image Upload Preview  
+        function ShowImagePreview(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#imagePreview').prop('src', e.target.result);
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
         }
     </script>
 

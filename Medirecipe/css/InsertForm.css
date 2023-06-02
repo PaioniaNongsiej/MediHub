@@ -18,7 +18,7 @@ input:not(input[type="checkbox"]){
 
 textarea{
     width: 100%;
-    height: 270px;
+    height: 252px;
     resize: none;
     padding: 10px 20px;
 }
@@ -29,8 +29,8 @@ textarea{
     width: 237px;
 }
 .product_info{
-    width: 100%;
-    height: 500px;
+    width: 76%;
+    height: 328px;
     display: grid;
     grid-template-columns: .75fr 1.25fr;
     grid-template-rows: repeat(2, 1fr);
@@ -56,18 +56,20 @@ textarea{
     font-weight: 500;
 }
 
-.upload_image_sec, .select_sizes{
+/*.upload_image_sec, .select_sizes{
     background: #fff;
     border-radius: 10px;
     padding: 20px;
-}
+    height: 434px;
+    width: 689px;
+}*/
 
 .text img{
     height: 20px;
     margin-right: 10px;
 }
 
-.upload_catalouge{
+/*.upload_catalouge{
     width: 100%;
     margin: 20px 0;
     display: grid;
@@ -81,7 +83,7 @@ textarea{
     background: #f5f5f5;
     cursor: pointer;
     background-size: cover;
-}
+}*/
 
 .upload_image:hover{
     background: rgba(0, 0, 0, 0.2);
@@ -138,10 +140,10 @@ input::-webkit-inner-spin-button{
 }
 
 .buttons{
-    margin: 20px 0 50px;
+   
 }
 
-.btn{
+.btn {
     padding: 10px 30px;
     text-transform: capitalize;
     color: #fff;
@@ -151,6 +153,7 @@ input::-webkit-inner-spin-button{
     outline: none;
     margin-right: 10px;
     cursor: pointer;
+    margin: 20px 0 50px;
 }
 
 #save_btn{
