@@ -11,17 +11,20 @@ using System.IO;
 
 namespace Medirecipe
 {
-    public partial class product_add : System.Web.UI.Page
+    public partial class ProductAdd : System.Web.UI.Page
     {
+        string constr = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)
         {
-           
             if (!IsPostBack)
             {
                 getcategory();
 
-
             }
+            countproducts();
+            countrecipe();
+            countcategory();
+            countorder();
         }
         public void getcategory()
         {
@@ -30,16 +33,16 @@ namespace Medirecipe
             con.Open();
             SqlCommand de = new SqlCommand("select * from category", con);
             de.CommandType = CommandType.Text;
-           category_ID.DataSource = de.ExecuteReader();
-           category_ID.DataTextField = "category_name";
-           category_ID.DataValueField = "id";
-           category_ID.DataBind();
+            category_ID.DataSource = de.ExecuteReader();
+            category_ID.DataTextField = "category_name";
+            category_ID.DataValueField = "id";
+            category_ID.DataBind();
             category_ID.Items.Insert(0, new ListItem("Select category", "0"));
         }
 
         protected void btn_Click(object sender, EventArgs e)
         {
-            string constr = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
+       
             SqlConnection con = new SqlConnection(constr);
             con.Open();
             //SqlCommand checkproduct = new SqlCommand("select * from product where product_id='" + product_id.Text + "'", con);
@@ -73,6 +76,43 @@ namespace Medirecipe
                     ClientScript.RegisterStartupScript(this.GetType(), "SuccessMessage", script, true);
                 }
             }
+        }
+
+        public void countproducts()
+        {
+
+            SqlConnection con = new SqlConnection(constr);
+            con.Open();
+            SqlCommand c = new SqlCommand("select COUNT(*) from product", con);
+            int? RowCount = (int?)c.ExecuteScalar();
+            total_product.Text = RowCount.ToString();
+        }
+
+        public void countrecipe()
+        {
+            SqlConnection con = new SqlConnection(constr);
+            con.Open();
+            SqlCommand c = new SqlCommand("select COUNT(*) from recipe", con);
+            int? RowCount = (int?)c.ExecuteScalar();
+            total_recipe.Text = RowCount.ToString();
+        }
+
+        public void countcategory()
+        {
+            SqlConnection con = new SqlConnection(constr);
+            con.Open();
+            SqlCommand c = new SqlCommand("select COUNT(*) from category", con);
+            int? RowCount = (int?)c.ExecuteScalar();
+            total_category.Text = RowCount.ToString();
+        }
+
+        public void countorder()
+        {
+            SqlConnection con = new SqlConnection(constr);
+            con.Open();
+            SqlCommand c = new SqlCommand("select COUNT(*) from orders", con);
+            int? RowCount = (int?)c.ExecuteScalar();
+            total_order.Text = RowCount.ToString();
         }
     }
 }

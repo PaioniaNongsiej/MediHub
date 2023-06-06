@@ -291,7 +291,7 @@
     <Content Include="assets\libs\twitter-bootstrap-wizard\jquery.bootstrap.wizard.min.js" />
     <Content Include="assets\libs\twitter-bootstrap-wizard\prettify.css" />
     <Content Include="assets\libs\twitter-bootstrap-wizard\prettify.js" />
-    <Content Include="category_add.aspx" />
+    <Content Include="CategoryAdd.aspx" />
     <Content Include="category_table.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -299,10 +299,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
-    <Content Include="css\datatable.css" />
-    <Content Include="css\InsertForm.css" />
-    <Content Include="css\signup.css" />
-    <Content Include="css\Styles.css" />
+    <Content Include="css\style.css" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -339,7 +336,6 @@
     <Content Include="assets\fonts\remixicondf6d.ttf" />
     <Content Include="assets\fonts\remixicondf6d.woff" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
-    <Content Include="homepage.aspx" />
     <Content Include="homepages.aspx" />
     <Content Include="image\backgroud.jpg" />
     <Content Include="image\database_design.png" />
@@ -351,8 +347,8 @@
     <Content Include="image\medi logo.jpg" />
     <Content Include="image\region.jpg" />
     <Content Include="image\register.jpeg" />
-    <Content Include="product_add.aspx" />
-    <Content Include="recipes_add.aspx" />
+    <Content Include="ProductAdd.aspx" />
+    <Content Include="RecipeAdd.aspx" />
     <Content Include="Scripts\InsertForm.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -383,9 +379,11 @@
     <Content Include="Scripts\WebForms\WebForms.js" />
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
-    <Content Include="shipper_add.aspx" />
+    <Content Include="ShipperAdd.aspx" />
+    <Content Include="sidepanel.html" />
     <Content Include="Site.Master" />
     <Content Include="table_demo.aspx" />
+    <Content Include="CategoryList.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -401,12 +399,12 @@
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="category_add.aspx.cs">
-      <DependentUpon>category_add.aspx</DependentUpon>
+    <Compile Include="CategoryAdd.aspx.cs">
+      <DependentUpon>CategoryAdd.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="category_add.aspx.designer.cs">
-      <DependentUpon>category_add.aspx</DependentUpon>
+    <Compile Include="CategoryAdd.aspx.designer.cs">
+      <DependentUpon>CategoryAdd.aspx</DependentUpon>
     </Compile>
     <Compile Include="category_table.aspx.cs">
       <DependentUpon>category_table.aspx</DependentUpon>
@@ -432,13 +430,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="homepage.aspx.cs">
-      <DependentUpon>homepage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="homepage.aspx.designer.cs">
-      <DependentUpon>homepage.aspx</DependentUpon>
-    </Compile>
     <Compile Include="homepages.aspx.cs">
       <DependentUpon>homepages.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -446,27 +437,27 @@
     <Compile Include="homepages.aspx.designer.cs">
       <DependentUpon>homepages.aspx</DependentUpon>
     </Compile>
-    <Compile Include="product_add.aspx.cs">
-      <DependentUpon>product_add.aspx</DependentUpon>
+    <Compile Include="ProductAdd.aspx.cs">
+      <DependentUpon>ProductAdd.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="product_add.aspx.designer.cs">
-      <DependentUpon>product_add.aspx</DependentUpon>
+    <Compile Include="ProductAdd.aspx.designer.cs">
+      <DependentUpon>ProductAdd.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="recipes_add.aspx.cs">
-      <DependentUpon>recipes_add.aspx</DependentUpon>
+    <Compile Include="RecipeAdd.aspx.cs">
+      <DependentUpon>RecipeAdd.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="recipes_add.aspx.designer.cs">
-      <DependentUpon>recipes_add.aspx</DependentUpon>
+    <Compile Include="RecipeAdd.aspx.designer.cs">
+      <DependentUpon>RecipeAdd.aspx</DependentUpon>
     </Compile>
-    <Compile Include="shipper_add.aspx.cs">
-      <DependentUpon>shipper_add.aspx</DependentUpon>
+    <Compile Include="ShipperAdd.aspx.cs">
+      <DependentUpon>ShipperAdd.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="shipper_add.aspx.designer.cs">
-      <DependentUpon>shipper_add.aspx</DependentUpon>
+    <Compile Include="ShipperAdd.aspx.designer.cs">
+      <DependentUpon>ShipperAdd.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -488,6 +479,13 @@
     </Compile>
     <Compile Include="table_demo.aspx.designer.cs">
       <DependentUpon>table_demo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CategoryList.aspx.cs">
+      <DependentUpon>CategoryList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CategoryList.aspx.designer.cs">
+      <DependentUpon>CategoryList.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>

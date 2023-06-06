@@ -11,71 +11,71 @@ namespace Medirecipe
 {
 
 
-    public partial class recipes_add
+    public partial class ShipperAdd
     {
 
         /// <summary>
-        /// recipe_name control.
+        /// form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox recipe_name;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// serving control.
+        /// total_recipe control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox serving;
+        protected global::System.Web.UI.WebControls.Label total_recipe;
 
         /// <summary>
-        /// s_des control.
+        /// total_category control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox s_des;
+        protected global::System.Web.UI.WebControls.Label total_category;
 
         /// <summary>
-        /// ingredient control.
+        /// total_product control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea ingredient;
+        protected global::System.Web.UI.WebControls.Label total_product;
 
         /// <summary>
-        /// l_des control.
+        /// total_order control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea l_des;
+        protected global::System.Web.UI.WebControls.Label total_order;
 
         /// <summary>
-        /// imagePreview control.
+        /// shipper_name control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image imagePreview;
+        protected global::System.Web.UI.WebControls.TextBox shipper_name;
 
         /// <summary>
-        /// first_file_upload_btn control.
+        /// shipping_price control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload first_file_upload_btn;
+        protected global::System.Web.UI.WebControls.TextBox shipping_price;
 
         /// <summary>
         /// add_btn control.
