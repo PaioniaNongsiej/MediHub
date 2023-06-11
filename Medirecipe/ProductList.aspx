@@ -1,14 +1,14 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CategoryList.aspx.cs" Inherits="Medirecipe.UserList" EnableEventValidation="false"  %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ProductList.aspx.cs" Inherits="Medirecipe.ProductList" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-   <title>MediRecipe | Category List</title>
+    <title>MediRecipe | Product List</title>
        
         
         <!-- App favicon -->
-        <link rel="shortcut icon" href="assets/images/favicon.ico /"/> 
+        <link rel="shortcut icon" href="assets/images/favicon.ico /">
 
         <!-- plugin css -->
         <link href="assets/libs/jsvectormap/css/jsvectormap.min.css" rel="stylesheet" type="text/css" />
@@ -24,32 +24,8 @@
       
       <link href="assets/css/app.min.css"  rel="stylesheet" type="text/css" />
       <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>  
-        <div class="rightbar-overlay"></div>
-
-         <!-- JAVASCRIPT -->
-        <script src="assets/libs/jquery/jquery.min.js"></script>
-        <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="assets/libs/metismenu/metisMenu.min.js"></script>
-        <script src="assets/libs/simplebar/simplebar.min.js"></script>
-        <script src="assets/libs/node-waves/waves.min.js"></script>
-
-        <!-- Icon -->
-        <script src="unicons.iconscout.com/release/v2.0.1/script/monochrome/bundle.js"></script>
-
-        <!-- apexcharts -->
-        <script src="assets/libs/apexcharts/apexcharts.min.js"></script>
-
-        <!-- Vector map-->
-        <script src="assets/libs/jsvectormap/js/jsvectormap.min.js"></script>
-        <script src="assets/libs/jsvectormap/maps/world-merc.js"></script>
-
-        <script src="assets/js/pages/dashboard.init.js"></script>
-
-        <!-- App js -->
-        <script src="assets/js/app.js"></script>
-
 </head>
-    <body data-sidebar="colored">
+<body data-sidebar="colored">
     <form id="form1" runat="server">
  <!--#include file="sidepanel.html"-->
                     <!-- Sidebar -->
@@ -151,12 +127,16 @@
                                             <h5><b>Category</b></h5>
                                          </header>
                                         
-        <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">  
-    
+                                        <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                           
+
+       <div class="form" >
+           
           <asp:TextBox ID="txtSearch" runat="server" class="txtSearch"></asp:TextBox>
           <asp:Button Text="Search" runat="server" OnClick="Search" Width="77px"/>
-           <asp:Button Text="Export" runat="server" OnClick="Export" Width="77px"/>
-            
+
+            <hr />
+        
 
            <asp:ScriptManager ID="ScriptManager1" runat="server">
     </asp:ScriptManager>
@@ -168,26 +148,22 @@
                     AllowPaging="True" OnRowCancelingEdit="gvImage_RowCancelingEdit" 
                     DataKeyNames="id" CellPadding="4" OnRowEditing="gvImage_RowEditing" 
                     OnRowUpdating="gvImage_RowUpdating" OnRowDeleting="gvImage_RowDeleting"
-                    onrowdatabound="gvImage_RowDataBound" 
                     EmptyDataText="No records has been added.">
         <Columns>
-            <asp:BoundField DataField = "id" HeaderText = "ID" HtmlEncode = "true" />
-           <%-- <asp:TemplateField HeaderText="id" HeaderStyle-Width="200px">
-
+            <asp:TemplateField HeaderText="id" HeaderStyle-Width="200px">
                 <ItemTemplate>
                     <asp:Label ID="lblImgId" runat="server" Text='<%#Container.DataItemIndex+1%>'></asp:Label>
-
                 </ItemTemplate>
-            </asp:TemplateField>--%>
+            </asp:TemplateField>
             <asp:TemplateField HeaderText="Name" HeaderStyle-Width="200px">
                 <ItemTemplate>
-                    <asp:Label ID="lblImageName" runat="server" Text='<%# Eval("category_name") %>'></asp:Label>
+                    <asp:Label ID="lblImageName" runat="server" Text='<%# Eval("product_name") %>'></asp:Label>
                 </ItemTemplate>
                 <EditItemTemplate>
-                    <asp:TextBox ID="txt_Name" runat="server" Text='<%# Eval("category_name") %>'></asp:TextBox>
+                    <asp:TextBox ID="txt_Name" runat="server" Text='<%# Eval("product_name") %>'></asp:TextBox>
                 </EditItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Icon" HeaderStyle-Width="200px">
+            <asp:TemplateField HeaderText="Image" HeaderStyle-Width="200px">
                 <ItemTemplate>
                     <asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("category_icon") %>' Height="80px" Width="100px" />
                 </ItemTemplate>
@@ -197,7 +173,7 @@
                     <asp:FileUpload ID="fileupload1" runat="server" />
                 </EditItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderStyle-Width="150px" HeaderText="Action">
+            <asp:TemplateField HeaderStyle-Width="150px">
                 <ItemTemplate>
                     <asp:LinkButton ID="LkB1" runat="server" CommandName="Edit">Edit</asp:LinkButton>
                     <asp:LinkButton ID="LkB11" runat="server" CommandName="Delete">Delete</asp:LinkButton>
@@ -214,15 +190,17 @@
 
         </asp:UpdatePanel>
 
-           </table>
+           
             </div> 
-                                   
+                                                
+                                        </table>
+                                    </div>
+                                   </div
                                 </div>
                             </div> <!-- end col -->
                         </div> <!-- end row -->
-                     </div>    
+                         
                </div>
-            </div>
                 <footer class="footer">
                     <div class="container-fluid">
                         <div class="row">
@@ -238,37 +216,35 @@
                     </div>
                 </footer>
                 
+            </div>
+              
 
-   
+    </form>
 
-               
+                <div class="rightbar-overlay"></div>
 
-        <!-- Required datatable js -->
-        <script src="assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
-        <script src="assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+         <!-- JAVASCRIPT -->
+        <script src="assets/libs/jquery/jquery.min.js"></script>
+        <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/libs/metismenu/metisMenu.min.js"></script>
+        <script src="assets/libs/simplebar/simplebar.min.js"></script>
+        <script src="assets/libs/node-waves/waves.min.js"></script>
 
-        <!-- Buttons examples -->
-        <script src="assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
-        <script src="assets/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
-        <script src="assets/libs/jszip/jszip.min.js"></script>
-        <script src="assets/libs/pdfmake/build/pdfmake.min.js"></script>
-        <script src="assets/libs/pdfmake/build/vfs_fonts.js"></script>
-        <script src="assets/libs/datatables.net-buttons/js/buttons.html5.min.js"></script>
-        <script src="assets/libs/datatables.net-buttons/js/buttons.print.min.js"></script>
-        <script src="assets/libs/datatables.net-buttons/js/buttons.colVis.min.js"></script>
+        <!-- Icon -->
+        <script src="unicons.iconscout.com/release/v2.0.1/script/monochrome/bundle.js"></script>
 
-        <script src="assets/libs/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
-        <script src="assets/libs/datatables.net-select/js/dataTables.select.min.js"></script>
+        <!-- apexcharts -->
+        <script src="assets/libs/apexcharts/apexcharts.min.js"></script>
 
-        <!-- Responsive examples -->
-        <script src="assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
-        <script src="assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+        <!-- Vector map-->
+        <script src="assets/libs/jsvectormap/js/jsvectormap.min.js"></script>
+        <script src="assets/libs/jsvectormap/maps/world-merc.js"></script>
 
-        <!-- Datatable init js -->
-        <script src="assets/js/pages/datatables.init.js"></script>
+        <script src="assets/js/pages/dashboard.init.js"></script>
 
+        <!-- App js -->
         <script src="assets/js/app.js"></script>
- </form>
+
 
 </body>
 </html>

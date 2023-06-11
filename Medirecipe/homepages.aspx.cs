@@ -21,6 +21,9 @@ namespace Paionia
                
             }
             countproducts();
+            countrecipe();
+            countcategory();
+            countorder();
         }
         public void countproducts()
         {
@@ -30,6 +33,33 @@ namespace Paionia
             SqlCommand c = new SqlCommand("select COUNT(*) from product", con);
             int? RowCount = (int?)c.ExecuteScalar();
             total_product.Text = RowCount.ToString();
+        }
+
+        public void countrecipe()
+        {
+            SqlConnection con = new SqlConnection(constr);
+            con.Open();
+            SqlCommand c = new SqlCommand("select COUNT(*) from recipe", con);
+            int? RowCount = (int?)c.ExecuteScalar();
+            total_recipe.Text = RowCount.ToString();
+        }
+
+        public void countcategory()
+        {
+            SqlConnection con = new SqlConnection(constr);
+            con.Open();
+            SqlCommand c = new SqlCommand("select COUNT(*) from category", con);
+            int? RowCount = (int?)c.ExecuteScalar();
+            total_category.Text = RowCount.ToString();
+        }
+
+        public void countorder()
+        {
+            SqlConnection con = new SqlConnection(constr);
+            con.Open();
+            SqlCommand c = new SqlCommand("select COUNT(*) from shipper", con);
+            int? RowCount = (int?)c.ExecuteScalar();
+            total_order.Text = RowCount.ToString();
         }
     }
 }

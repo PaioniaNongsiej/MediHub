@@ -7,12 +7,16 @@ using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Data;
-
+using System.IO;
 
 namespace Medirecipe
 {
     public partial class UserList : System.Web.UI.Page
     {
+        SqlConnection con;
+        SqlDataAdapter da;
+        DataSet ds;
+        SqlCommand cmd;
         string constr = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -20,7 +24,7 @@ namespace Medirecipe
             if (!this.IsPostBack)
             {
                 //this.Search();
-                this.BindGrid();
+                BindGrid();
             }
             if (this.Page.PreviousPage != null)
             {
@@ -57,8 +61,8 @@ namespace Medirecipe
                     {
                         DataTable dt = new DataTable();
                         sda.Fill(dt);
-                        gvCustomers.DataSource = dt;
-                        gvCustomers.DataBind();
+                        gvImage.DataSource = dt;
+                        gvImage.DataBind();
                     }
                 }
             }
@@ -68,82 +72,117 @@ namespace Medirecipe
             this.Search();
         }
 
-        protected void gvCustomers_SelectedIndexChanged(object sender, EventArgs e)
+        public override void VerifyRenderingInServerForm(Control control)
         {
+            //required to avoid the runtime error "  
+            //Control 'GridView1' of type 'GridView' must be placed inside a form tag with runat=server."  
+        }
+
+        protected void Export(object sender, EventArgs e)
+        {
+            ExportGridToExcel();
+        }
+        private void ExportGridToExcel()
+        {
+            Response.Clear();
+            Response.Buffer = true;
+            Response.ClearContent();
+            Response.ClearHeaders();
+            Response.Charset = "";
+            string FileName = "Category" + DateTime.Now + ".xls";
+            StringWriter strwritter = new StringWriter();
+            HtmlTextWriter htmltextwrtter = new HtmlTextWriter(strwritter);
+            Response.Cache.SetCacheability(HttpCacheability.NoCache);
+            Response.ContentType = "application/vnd.ms-excel";
+            Response.AddHeader("Content-Disposition", "attachment;filename=" + FileName);
+            gvImage.GridLines = GridLines.Both;
+            gvImage.HeaderStyle.Font.Bold = true;
+            gvImage.RenderControl(htmltextwrtter);
+            Response.Write(strwritter.ToString());
+            Response.End();
 
         }
-        private void BindGrid()
+        protected void BindGrid()
         {
+            con = new SqlConnection(constr);
+            con.Open();
+            da = new SqlDataAdapter("select * from category", con);
+            ds = new DataSet();
+            da.Fill(ds);
+            gvImage.DataSource = ds;
+            gvImage.DataBind();
+        }
+        protected void gvImage_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            e.Row.Cells[0].Enabled = false;
+        }
+        // edit event
+        protected void gvImage_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            gvImage.EditIndex = e.NewEditIndex;
+            BindGrid();
+
+        }
+        // update event
+        protected void gvImage_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+
+            //find image id of edit row
+            string imageId = gvImage.DataKeys[e.RowIndex].Value.ToString();
+
+            // find values for update
+            TextBox name = (TextBox)gvImage.Rows[e.RowIndex].FindControl("txt_Name");
+            FileUpload FileUpload1 = (FileUpload)gvImage.Rows[e.RowIndex].FindControl("FileUpload1");
+            con = new SqlConnection(constr);
+            string path = "~/pictures/category/";
+            if (FileUpload1.HasFile)
+            {
+                path += FileUpload1.FileName;
+                //save image in folder
+                FileUpload1.SaveAs(MapPath(path));
+            }
+            else
+            {
+                // use previous user image if new image is not changed
+                Image img = (Image)gvImage.Rows[e.RowIndex].FindControl("img_user");
+                path = img.ImageUrl;
+            }
+            SqlCommand cmd = new SqlCommand("update category set category_name='" + name.Text + "',category_icon='" + path + "'  where id=" + imageId + "", con);
+            con.Open();
+            cmd.ExecuteNonQuery();
+            con.Close();
+            gvImage.EditIndex = -1;
+            BindGrid();
+        }
+        // cancel edit event
+        protected void gvImage_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+            gvImage.EditIndex = -1;
+            BindGrid();
+        }
+        //delete event
+        protected void gvImage_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            int id = Convert.ToInt32(gvImage.DataKeys[e.RowIndex].Values[0]);
+            string query = "DELETE FROM category WHERE id=@CID";
             string constr = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
-            string query = "SELECT *  FROM category";
             using (SqlConnection con = new SqlConnection(constr))
             {
-                using (SqlDataAdapter sda = new SqlDataAdapter(query, con))
+                using (SqlCommand cmd = new SqlCommand(query))
                 {
-                    using (DataTable dt = new DataTable())
-                    {
-                        sda.Fill(dt);
-                        gvCustomers.DataSource = dt;
-                        gvCustomers.DataBind();
-                    }
+                    cmd.Parameters.AddWithValue("@CID", id);
+                    cmd.Connection = con;
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
                 }
             }
-        }
 
-
-        protected void OnRowEditing(object sender, GridViewEditEventArgs e)
-        {
-            //gvCustomers.EditIndex = e.NewEditIndex;
-            //this.BindGrid();
-        }
-
-        protected void OnRowUpdating(object sender, GridViewUpdateEventArgs e)
-        {
-
-        }
-
-        protected void OnRowCancelingEdit(object sender, EventArgs e)
-        {
-            gvCustomers.EditIndex = -1;
             this.BindGrid();
         }
-
-        protected void OnRowDeleting(object sender, GridViewDeleteEventArgs e)
-        {
-                int id = Convert.ToInt32(gvCustomers.DataKeys[e.RowIndex].Values[0]);
-                string query = "DELETE FROM category WHERE id=@CID";
-                string constr = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
-                using (SqlConnection con = new SqlConnection(constr))
-                {
-                    using (SqlCommand cmd = new SqlCommand(query))
-                    {
-                        cmd.Parameters.AddWithValue("@CID", id);
-                        cmd.Connection = con;
-                        con.Open();
-                        cmd.ExecuteNonQuery();
-                        con.Close();
-                    }
-                }
-           
-            this.BindGrid();
-        }
-
-        protected void OnRowDataBound(object sender, GridViewRowEventArgs e)
-        {
-            if (e.Row.RowType == DataControlRowType.DataRow && e.Row.RowIndex != gvCustomers.EditIndex)
-            {
-                (e.Row.Cells[2].Controls[2] as LinkButton).Attributes["onclick"] = "return confirm('Do you want to delete this row?');";
-
-            }
-        }
-
-        protected void OnPaging(object sender, GridViewPageEventArgs e)
-        {
-            gvCustomers.PageIndex = e.NewPageIndex;
-            this.BindGrid();
-        }
-
-        protected void Redirect(object sender, EventArgs e)
+        
+       
+    protected void Redirect(object sender, EventArgs e)
         {
             Server.Transfer("CategoryAdd.aspx");
         }
@@ -179,7 +218,7 @@ namespace Medirecipe
         {
             SqlConnection con = new SqlConnection(constr);
             con.Open();
-            SqlCommand c = new SqlCommand("select COUNT(*) from orders", con);
+            SqlCommand c = new SqlCommand("select COUNT(*) from shipper", con);
             int? RowCount = (int?)c.ExecuteScalar();
             total_order.Text = RowCount.ToString();
         }

@@ -29,8 +29,7 @@
  <!--#include file="sidepanel.html"-->
                     <!-- Sidebar -->
      
-                          <div class="main-content">
-
+             <div class="main-content">
                 <div class="page-content">
                     <div class="container-fluid">
                         
@@ -48,7 +47,7 @@
                                             </div>
                                             <div class="flex-grow-1 overflow-hidden ms-4">
                                                 <p class="text-muted text-truncate font-size-15 mb-2"> Total Recipe</p>
-                                                <h3 class="fs-4 flex-grow-1 mb-3">34,123.20 <span class="text-muted font-size-16">USD</span></h3>
+                                                <h3 class="fs-4 flex-grow-1 mb-3"><asp:Label ID="total_recipe" runat="server"></asp:Label></h3>
                                             </div>
                                         </div>
                                     </div>
@@ -66,7 +65,7 @@
                                             </div>
                                             <div class="flex-grow-1 overflow-hidden ms-4">
                                                 <p class="text-muted text-truncate font-size-15 mb-2"> Total Category</p>
-                                                <h3 class="fs-4 flex-grow-1 mb-3">63,234 <span class="text-muted font-size-16"></span></h3>
+                                                <h3 class="fs-4 flex-grow-1 mb-3"><asp:Label ID="total_category" runat="server"></asp:Label></h3>
                                             </div>
                      
                                         </div>
@@ -104,7 +103,7 @@
                                             </div>
                                             <div class="flex-grow-1 overflow-hidden ms-4">
                                                 <p class="text-muted text-truncate font-size-15 mb-2"> Total Orders</p>
-                                                <h3 class="fs-4 flex-grow-1 mb-3">26,482.46 <span class="text-muted font-size-16">USD</span></h3>
+                                                <h3 class="fs-4 flex-grow-1 mb-3"><asp:Label ID="total_order" runat="server"></asp:Label></h3>
                                             </div>
                                          
                                         </div>
