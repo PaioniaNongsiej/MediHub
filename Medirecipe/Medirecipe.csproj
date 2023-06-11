@@ -382,6 +382,9 @@
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="ShipperAdd.aspx" />
     <Content Include="sidepanel.html" />
+    <Content Include="SidePanelDark.aspx" />
+    <Content Include="SidePanelIcon.aspx" />
+    <Content Include="SidePanelLight.aspx" />
     <Content Include="Site.Master" />
     <Content Include="table_demo.aspx" />
     <Content Include="CategoryList.aspx" />
@@ -466,6 +469,27 @@
     </Compile>
     <Compile Include="ShipperAdd.aspx.designer.cs">
       <DependentUpon>ShipperAdd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SidePanelDark.aspx.cs">
+      <DependentUpon>SidePanelDark.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SidePanelDark.aspx.designer.cs">
+      <DependentUpon>SidePanelDark.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SidePanelIcon.aspx.cs">
+      <DependentUpon>SidePanelIcon.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SidePanelIcon.aspx.designer.cs">
+      <DependentUpon>SidePanelIcon.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SidePanelLight.aspx.cs">
+      <DependentUpon>SidePanelLight.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SidePanelLight.aspx.designer.cs">
+      <DependentUpon>SidePanelLight.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
