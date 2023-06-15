@@ -202,7 +202,7 @@
 
                 <asp:GridView ID="gvCustomers" runat="server" AutoGenerateColumns="False" OnRowDataBound="OnRowDataBound"
                     DataKeyNames="id" OnRowEditing="OnRowEditing" OnRowCancelingEdit="OnRowCancelingEdit"
-                    PageSize="5" AllowPaging="True"   OnPageIndexChanging="OnPaging" OnRowUpdating="OnRowUpdating" 
+                    PageSize="3" AllowPaging="True"   OnPageIndexChanging="OnPaging" OnRowUpdating="OnRowUpdating" 
                 OnRowDeleting="OnRowDeleting" EmptyDataText="No records has been added." CssClass="table table-bordered table-hover display nowrap margin-top-7 w-p80 table-responsive" Width="1020px">
                     <Columns>
 					

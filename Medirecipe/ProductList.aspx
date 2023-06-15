@@ -24,6 +24,26 @@
       
       <link href="assets/css/app.min.css"  rel="stylesheet" type="text/css" />
       <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>  
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.24/themes/start/jquery-ui.css" />
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.24/jquery-ui.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $("#dialog").dialog({
+            autoOpen: false,
+            modal: true,
+            height: 600,
+            width: 600,
+            title: "Zoomed Image"
+        });
+        $("[id*=gvImages] img").click(function () {
+            $('#dialog').html('');
+            $('#dialog').append($(this).clone());
+            $('#dialog').dialog('open');
+        });
+    });
+</script>
 </head>
 <body data-sidebar="colored">
     <form id="form1" runat="server">
@@ -121,81 +141,75 @@
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-body">
-        
-                                       
+                                    
                                         <header class="w3-container" style="padding-top:22px">
                                             <h5><b>Category</b></h5>
                                          </header>
                                         
-                                        <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                                           
-
-       <div class="form" >
-           
-          <asp:TextBox ID="txtSearch" runat="server" class="txtSearch"></asp:TextBox>
+        <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">  
+    
+          <%--<asp:TextBox ID="txtSearch" runat="server" class="txtSearch"></asp:TextBox>
           <asp:Button Text="Search" runat="server" OnClick="Search" Width="77px"/>
-
-            <hr />
-        
+           <asp:Button Text="Export" runat="server" OnClick="Export" Width="77px"/>--%>
+            
 
            <asp:ScriptManager ID="ScriptManager1" runat="server">
     </asp:ScriptManager>
 			<asp:UpdatePanel ID="UpdatePanel1" runat="server">
 
             <ContentTemplate>
+                                           <asp:GridView ID="gridview1" runat="server" AutoGenerateColumns="False" OnRowDataBound="OnRowDataBound"
+                    DataKeyNames="id" OnRowEditing="OnRowEditing" OnRowCancelingEdit="OnRowCancelingEdit"
+                    PageSize="3" AllowPaging="True"   OnPageIndexChanging="OnPaging" OnRowUpdating="OnRowUpdating" 
+                OnRowDeleting="OnRowDeleting" EmptyDataText="No records has been added." CssClass="table table-bordered table-hover display nowrap margin-top-7 w-p80 table-responsive" Width="1020px">
+                    <Columns>
+					
+                        <asp:TemplateField HeaderText="Name"   ItemStyle-Width="150" >
+                            <ItemTemplate>
+                                <asp:Label ID="lblName" runat="server"   Text='<%# Eval("product_name") %>'></asp:Label>
 
-                <asp:GridView runat="server" ID="gvImage" AutoGenerateColumns="false" 
-                    AllowPaging="True" OnRowCancelingEdit="gvImage_RowCancelingEdit" 
-                    DataKeyNames="id" CellPadding="4" OnRowEditing="gvImage_RowEditing" 
-                    OnRowUpdating="gvImage_RowUpdating" OnRowDeleting="gvImage_RowDeleting"
-                    EmptyDataText="No records has been added.">
-        <Columns>
-            <asp:TemplateField HeaderText="id" HeaderStyle-Width="200px">
-                <ItemTemplate>
-                    <asp:Label ID="lblImgId" runat="server" Text='<%#Container.DataItemIndex+1%>'></asp:Label>
-                </ItemTemplate>
-            </asp:TemplateField>
-            <asp:TemplateField HeaderText="Name" HeaderStyle-Width="200px">
-                <ItemTemplate>
-                    <asp:Label ID="lblImageName" runat="server" Text='<%# Eval("product_name") %>'></asp:Label>
-                </ItemTemplate>
-                <EditItemTemplate>
-                    <asp:TextBox ID="txt_Name" runat="server" Text='<%# Eval("product_name") %>'></asp:TextBox>
-                </EditItemTemplate>
-            </asp:TemplateField>
-            <asp:TemplateField HeaderText="Image" HeaderStyle-Width="200px">
-                <ItemTemplate>
-                    <asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("category_icon") %>' Height="80px" Width="100px" />
-                </ItemTemplate>
-                <EditItemTemplate>
-                    <asp:Image ID="img_user" runat="server" ImageUrl='<%# Eval("category_icon") %>' Height="80px" Width="100px" />
-                    <br />
-                    <asp:FileUpload ID="fileupload1" runat="server" />
-                </EditItemTemplate>
-            </asp:TemplateField>
-            <asp:TemplateField HeaderStyle-Width="150px">
-                <ItemTemplate>
-                    <asp:LinkButton ID="LkB1" runat="server" CommandName="Edit">Edit</asp:LinkButton>
-                    <asp:LinkButton ID="LkB11" runat="server" CommandName="Delete">Delete</asp:LinkButton>
-                </ItemTemplate>
-                <EditItemTemplate>
-                    <asp:LinkButton ID="LkB2" runat="server" CommandName="Update">Update</asp:LinkButton>
-                    <asp:LinkButton ID="LkB3" runat="server" CommandName="Cancel">Cancel</asp:LinkButton>
-                </EditItemTemplate>
-            </asp:TemplateField>
-        </Columns>
-    </asp:GridView>
-               
-            </ContentTemplate>
+                            </ItemTemplate>
+                            <EditItemTemplate>
+                                <asp:TextBox ID="txtName" runat="server" class="form-control"   autocomplete="off"  Text ='<%# Eval("category_name") %>' Width="140"></asp:TextBox>
+                            </EditItemTemplate>
+							 <HeaderStyle CssClass="bg-primary" />
+                            <ItemStyle Width="150px" />
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Icon" ItemStyle-Width="150">
+                            <ItemTemplate>
+                                <asp:Label ID="lblCountry" runat="server"  Text='<%# Eval("first_img") %>'></asp:Label>
+                            </ItemTemplate>
+                            <EditItemTemplate>
+                                <asp:Image ="server" ImageUrl='<%# Eval("first_img) %>' Height="80px" Width="100px" />
+                            </EditItemTemplate>
+							 <HeaderStyle CssClass="bg-primary" />
+                            <ItemStyle Width="150px" />
+                        </asp:TemplateField>
+                        
+						
+					
+						
+                        <asp:CommandField  HeaderText="Actions" ButtonType="Link" ShowEditButton="true" ShowDeleteButton="true" 
+                            ItemStyle-Width="150"  EditText="Edit" DeleteText="Del"
+CancelText="<i aria-hidden='true' class='glyphicon glyphicon-remove'></i>" UpdateText="<i aria-hidden='true' class='ti-check-box'></i>">
+									
+                        <ItemStyle Width="150px" />
+                        </asp:CommandField>
+                        <asp:ButtonField HeaderText="Edit" Text="Edit"/>
+									
+                    </Columns>
+					 <HeaderStyle CssClass="bg-danger" />
+                </asp:GridView>
+                                        <div id="dialog" style="display: none">
+                                            </ContentTemplate>
 
         </asp:UpdatePanel>
 
-           
-            </div> 
-                                                
-                                        </table>
+           </table>
+                                        </div>   
+                                        
                                     </div>
-                                   </div
+                                   </div>
                                 </div>
                             </div> <!-- end col -->
                         </div> <!-- end row -->

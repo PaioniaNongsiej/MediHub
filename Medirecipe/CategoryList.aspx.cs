@@ -26,15 +26,6 @@ namespace Medirecipe
                 //this.Search();
                 BindGrid();
             }
-            if (this.Page.PreviousPage != null)
-            {
-                GridView GridView1 = (GridView)this.Page.PreviousPage.FindControl("GridView1");
-            }
-            if (this.Page.PreviousPage != null)
-            {
-                Control ContentPlaceHolder1 = this.Page.PreviousPage.Master.FindControl("ContentPlaceHolder1");
-                GridView GridView1 = (GridView)ContentPlaceHolder1.FindControl("GridView1");
-            }
             countproducts();
             countrecipe();
             countcategory();
@@ -104,13 +95,32 @@ namespace Medirecipe
         }
         protected void BindGrid()
         {
-            con = new SqlConnection(constr);
-            con.Open();
-            da = new SqlDataAdapter("select * from category", con);
-            ds = new DataSet();
-            da.Fill(ds);
-            gvImage.DataSource = ds;
-            gvImage.DataBind();
+            //con = new SqlConnection(constr);
+            //con.Open();
+            //da = new SqlDataAdapter("select * from category", con);
+            //ds = new DataSet();
+            //da.Fill(ds);
+            //gvImage.DataSource = ds;
+            //gvImage.DataBind();
+
+            string query = "SELECT *  FROM category";
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                using (SqlDataAdapter sda = new SqlDataAdapter(query, con))
+                {
+                    using (DataTable dt = new DataTable())
+                    {
+                        sda.Fill(dt);
+                        gvImage.DataSource = dt;
+                        gvImage.DataBind();
+                    }
+                }
+            }
+        }
+        protected void OnPaging(object sender, GridViewPageEventArgs e)
+        {
+            gvImage.PageIndex = e.NewPageIndex;
+            this.BindGrid();
         }
         protected void gvImage_RowDataBound(object sender, GridViewRowEventArgs e)
         {

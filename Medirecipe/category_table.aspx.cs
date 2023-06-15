@@ -20,15 +20,15 @@ namespace Medirecipe
                 //this.Search();
                 this.BindGrid();
             }
-            if (this.Page.PreviousPage != null)
-            {
-                GridView GridView1 = (GridView)this.Page.PreviousPage.FindControl("GridView1");
-            }
-            if (this.Page.PreviousPage != null)
-            {
-                Control ContentPlaceHolder1 = this.Page.PreviousPage.Master.FindControl("ContentPlaceHolder1");
-                GridView GridView1 = (GridView)ContentPlaceHolder1.FindControl("GridView1");
-            }
+            //if (this.Page.PreviousPage != null)
+            //{
+            //    GridView GridView1 = (GridView)this.Page.PreviousPage.FindControl("GridView1");
+            //}
+            //if (this.Page.PreviousPage != null)
+            //{
+            //    Control ContentPlaceHolder1 = this.Page.PreviousPage.Master.FindControl("ContentPlaceHolder1");
+            //    GridView GridView1 = (GridView)ContentPlaceHolder1.FindControl("GridView1");
+            //}
         }
 
         private void Search()

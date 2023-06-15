@@ -383,11 +383,11 @@
     <Content Include="ShipperAdd.aspx" />
     <Content Include="sidepanel.html" />
     <Content Include="SidePanelDark.aspx" />
-    <Content Include="SidePanelIcon.aspx" />
     <Content Include="SidePanelLight.aspx" />
     <Content Include="Site.Master" />
     <Content Include="table_demo.aspx" />
     <Content Include="CategoryList.aspx" />
+    <Content Include="test.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -477,13 +477,6 @@
     <Compile Include="SidePanelDark.aspx.designer.cs">
       <DependentUpon>SidePanelDark.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SidePanelIcon.aspx.cs">
-      <DependentUpon>SidePanelIcon.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="SidePanelIcon.aspx.designer.cs">
-      <DependentUpon>SidePanelIcon.aspx</DependentUpon>
-    </Compile>
     <Compile Include="SidePanelLight.aspx.cs">
       <DependentUpon>SidePanelLight.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -518,6 +511,13 @@
     </Compile>
     <Compile Include="CategoryList.aspx.designer.cs">
       <DependentUpon>CategoryList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="test.aspx.cs">
+      <DependentUpon>test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test.aspx.designer.cs">
+      <DependentUpon>test.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
