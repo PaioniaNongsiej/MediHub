@@ -50,6 +50,7 @@ C:\Users\paionian\Desktop\medi\Medirecipe\Medirecipe\bin\roslyn\vbc.exe.config
 C:\Users\paionian\Desktop\medi\Medirecipe\Medirecipe\bin\roslyn\vbc.rsp
 C:\Users\paionian\Desktop\medi\Medirecipe\Medirecipe\bin\roslyn\VBCSCompiler.exe
 C:\Users\paionian\Desktop\medi\Medirecipe\Medirecipe\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\paionian\Desktop\medi\Medirecipe\Medirecipe\bin\AjaxControlToolkit.dll
 C:\Users\paionian\Desktop\medi\Medirecipe\Medirecipe\bin\Antlr3.Runtime.dll
 C:\Users\paionian\Desktop\medi\Medirecipe\Medirecipe\bin\AspNet.ScriptManager.bootstrap.dll
 C:\Users\paionian\Desktop\medi\Medirecipe\Medirecipe\bin\AspNet.ScriptManager.jQuery.dll
@@ -67,8 +68,8 @@ C:\Users\paionian\Desktop\medi\Medirecipe\Medirecipe\bin\Newtonsoft.Json.xml
 C:\Users\paionian\Desktop\medi\Medirecipe\Medirecipe\bin\Antlr3.Runtime.pdb
 C:\Users\paionian\Desktop\medi\Medirecipe\Medirecipe\bin\Microsoft.AspNet.FriendlyUrls.xml
 C:\Users\paionian\Desktop\medi\Medirecipe\Medirecipe\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\paionian\Desktop\medi\Medirecipe\Medirecipe\obj\Debug\Medirecipe.csproj.AssemblyReference.cache
 C:\Users\paionian\Desktop\medi\Medirecipe\Medirecipe\obj\Debug\Medirecipe.csproj.CoreCompileInputs.cache
 C:\Users\paionian\Desktop\medi\Medirecipe\Medirecipe\obj\Debug\Medirecipe.csproj.CopyComplete
 C:\Users\paionian\Desktop\medi\Medirecipe\Medirecipe\obj\Debug\Medirecipe.dll
 C:\Users\paionian\Desktop\medi\Medirecipe\Medirecipe\obj\Debug\Medirecipe.pdb
+C:\Users\paionian\Desktop\medi\Medirecipe\Medirecipe\obj\Debug\Medirecipe.csproj.AssemblyReference.cache

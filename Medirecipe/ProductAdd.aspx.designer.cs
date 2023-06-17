@@ -78,13 +78,13 @@ namespace Medirecipe
         protected global::System.Web.UI.WebControls.TextBox s_des;
 
         /// <summary>
-        /// l_des control.
+        /// long_des control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea l_des;
+        protected global::System.Web.UI.WebControls.TextBox long_des;
 
         /// <summary>
         /// imagePreview control.

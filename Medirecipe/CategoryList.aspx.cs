@@ -7,20 +7,30 @@ using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Data;
-
+using System.IO;
 
 namespace Medirecipe
 {
     public partial class UserList : System.Web.UI.Page
     {
         string constr = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
+        SqlConnection con;
+        SqlDataAdapter da;
+        DataSet ds;
+        SqlCommand cmd;
         protected void Page_Load(object sender, EventArgs e)
         {
-        
+
             if (!this.IsPostBack)
             {
-                //this.Search();
-                this.BindGrid();
+                this.BindData();
+            }
+            else
+            {
+                con = new SqlConnection(constr);
+                con.Close();
+
+
             }
             if (this.Page.PreviousPage != null)
             {
@@ -36,6 +46,17 @@ namespace Medirecipe
             countcategory();
             countorder();
             Search();
+        }
+
+        protected void BindData()
+        {
+            con = new SqlConnection(constr);
+            con.Open();
+            da = new SqlDataAdapter("select * from category", con);
+            ds = new DataSet();
+            da.Fill(ds);
+            GridView1.DataSource = ds;
+            GridView1.DataBind();
         }
         private void Search()
         {
@@ -57,8 +78,8 @@ namespace Medirecipe
                     {
                         DataTable dt = new DataTable();
                         sda.Fill(dt);
-                        gvCustomers.DataSource = dt;
-                        gvCustomers.DataBind();
+                        GridView1.DataSource = dt;
+                        GridView1.DataBind();
                     }
                 }
             }
@@ -68,85 +89,121 @@ namespace Medirecipe
             this.Search();
         }
 
-        protected void gvCustomers_SelectedIndexChanged(object sender, EventArgs e)
+        public override void VerifyRenderingInServerForm(Control control)
         {
-
-        }
-        private void BindGrid()
-        {
-            string constr = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
-            string query = "SELECT *  FROM category";
-            using (SqlConnection con = new SqlConnection(constr))
-            {
-                using (SqlDataAdapter sda = new SqlDataAdapter(query, con))
-                {
-                    using (DataTable dt = new DataTable())
-                    {
-                        sda.Fill(dt);
-                        gvCustomers.DataSource = dt;
-                        gvCustomers.DataBind();
-                    }
-                }
-            }
-        }
-
-
-        protected void OnRowEditing(object sender, GridViewEditEventArgs e)
-        {
-            //gvCustomers.EditIndex = e.NewEditIndex;
-            //this.BindGrid();
-        }
-
-        protected void OnRowUpdating(object sender, GridViewUpdateEventArgs e)
-        {
-
-        }
-
-        protected void OnRowCancelingEdit(object sender, EventArgs e)
-        {
-            gvCustomers.EditIndex = -1;
-            this.BindGrid();
-        }
-
-        protected void OnRowDeleting(object sender, GridViewDeleteEventArgs e)
-        {
-                int id = Convert.ToInt32(gvCustomers.DataKeys[e.RowIndex].Values[0]);
-                string query = "DELETE FROM category WHERE id=@CID";
-                string constr = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
-                using (SqlConnection con = new SqlConnection(constr))
-                {
-                    using (SqlCommand cmd = new SqlCommand(query))
-                    {
-                        cmd.Parameters.AddWithValue("@CID", id);
-                        cmd.Connection = con;
-                        con.Open();
-                        cmd.ExecuteNonQuery();
-                        con.Close();
-                    }
-                }
-           
-            this.BindGrid();
-        }
-
-        protected void OnRowDataBound(object sender, GridViewRowEventArgs e)
-        {
-            if (e.Row.RowType == DataControlRowType.DataRow && e.Row.RowIndex != gvCustomers.EditIndex)
-            {
-                (e.Row.Cells[2].Controls[2] as LinkButton).Attributes["onclick"] = "return confirm('Do you want to delete this row?');";
-
-            }
+            //required to avoid the runtime error "  
+            //Control 'GridView1' of type 'GridView' must be placed inside a form tag with runat=server."  
         }
 
         protected void OnPaging(object sender, GridViewPageEventArgs e)
         {
-            gvCustomers.PageIndex = e.NewPageIndex;
-            this.BindGrid();
+            GridView1.PageIndex = e.NewPageIndex;
+            this.BindData();
+        }
+        protected void Export(object sender, EventArgs e)
+        {
+            ExportGridToExcel();
+        }
+        private void ExportGridToExcel()
+        {
+            Response.Clear();
+            Response.Buffer = true;
+            Response.ClearContent();
+            Response.ClearHeaders();
+            Response.Charset = "";
+            string FileName = "Category" + DateTime.Now + ".xls";
+            StringWriter strwritter = new StringWriter();
+            HtmlTextWriter htmltextwrtter = new HtmlTextWriter(strwritter);
+            Response.Cache.SetCacheability(HttpCacheability.NoCache);
+            Response.ContentType = "application/vnd.ms-excel";
+            Response.AddHeader("Content-Disposition", "attachment;filename=" + FileName);
+            GridView1.GridLines = GridLines.Both;
+            GridView1.HeaderStyle.Font.Bold = true;
+            GridView1.RenderControl(htmltextwrtter);
+            Response.Write(strwritter.ToString());
+            Response.End();
+
+        }
+
+        protected void gvCustomers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+        
+        protected void gvImage_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            GridView1.EditIndex = e.NewEditIndex;
+            BindData();
+
+        }
+        // update event
+        protected void gvImage_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            //find image id of edit row
+            string imageId = GridView1.DataKeys[e.RowIndex].Value.ToString();
+            // find values for update
+            //TextBox name = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txt_Name");
+            FileUpload FileUpload1 = (FileUpload)GridView1.Rows[e.RowIndex].FindControl("FileUpload1");
+            con = new SqlConnection(constr);
+            string path = "~/pictures/category";
+            //
+            if (FileUpload1.HasFile)
+            {
+                path += FileUpload1.FileName;
+                //save image in folder
+                FileUpload1.SaveAs(MapPath(path));
+            }
+            else
+            {
+                // use previous user image if new image is not changed
+                Image img = (Image)GridView1.Rows[e.RowIndex].FindControl("img_user");
+                path = img.ImageUrl;
+            }
+            SqlCommand cmd = new SqlCommand("update Category set category_icon='" + path + "'  where id=" + imageId + "", con);
+            con.Open();
+            cmd.ExecuteNonQuery();
+            con.Close();
+            GridView1.EditIndex = -1;
+            BindData();
+        }
+        // cancel edit event
+        protected void gvImage_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+            GridView1.EditIndex = -1;
+            BindData();
+        }
+        //delete event
+        protected void gvImage_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            GridViewRow row = (GridViewRow)GridView1.Rows[e.RowIndex];
+            Label lbldeleteid = (Label)row.FindControl("lblImgId");
+            Label lblDeleteImageName = (Label)row.FindControl("lblImageName");
+            con = new SqlConnection(constr);
+            con.Open();
+            SqlCommand cmd = new SqlCommand("delete FROM category where id='" + Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value.ToString()) + "'", con);
+            cmd.ExecuteNonQuery();
+            con.Close();
+            //ImageDeleteFromFolder(lblDeleteImageName.Text);
+            BindData();
+        }
+        /// <summary>
+        /// This function is used to delete image from folder when deleting in gridview.
+        /// </summary>
+        /// <param name="imagename">image name</param>
+
+        protected void gvDetails_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView1.PageIndex = e.NewPageIndex;
+            BindData();
+            //GridView1.DataBind();
         }
 
         protected void Redirect(object sender, EventArgs e)
         {
             Server.Transfer("CategoryAdd.aspx");
         }
+
+
         public void countproducts()
         {
 

@@ -142,7 +142,7 @@
         <%--<div class="product_image"><p class="text">product image</p></div>--%>
         <div class="upload_image_sec">
             <!-- upload inputs -->
-            <p class="text">upload image</p>
+            <p class="text">upload icon</p>
            <%-- <div class="upload_catalouge">--%>
                 <div class="col-sm-3 col-md-3 col-xs-12">  
                             <div class="form-group"> 

@@ -121,7 +121,7 @@
                          <div class="col-xl-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h4 class="card-title">Product</h4>
+                                        <h4 class="card-title">Add Product</h4>
                                         <p class="card-title-desc">
                                         </p>
 
@@ -138,15 +138,14 @@
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
                                                         <label>Caption</label>
-                                                        <asp:TextBox ID="s_des" runat="server" class="form-control"  placeholder="short line about the product" ></asp:TextBox>
+                                                        <asp:TextBox ID="s_des" runat="server" class="form-control"  placeholder="short line about the product"></asp:TextBox>
                                                     </div>
                                                 </div>
                                             </div>
 
                                              <div class="mb-3">
                                               <label>Product Description</label>
-                                          
-                                              <textarea id="l_des" runat="server" class="form-control"  placeholder="detail description"></textarea>
+                                          <asp:TextBox id="long_des" runat="server" class="form-control"  placeholder="detail description" TextMode="MultiLine"></asp:TextBox>
                                             </div>
                  
      <!-- product image -->

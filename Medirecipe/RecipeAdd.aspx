@@ -123,7 +123,7 @@
                          <div class="col-xl-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h4 class="card-title">Recipe</h4>
+                                        <h4 class="card-title">Add Recipe</h4>
                                         <p class="card-title-desc">
                                         </p>
 
@@ -157,7 +157,7 @@
                                             </div>
 
                                              <div class="mb-3">
-                                              <label>Product Description</label>
+                                              <label>Recipe Description</label>
                                           
                                               <textarea id="l_des" runat="server" class="form-control"  placeholder="detail description"></textarea>
                                             </div>

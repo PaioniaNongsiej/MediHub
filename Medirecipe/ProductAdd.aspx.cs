@@ -62,8 +62,8 @@ namespace Medirecipe
                     string filename = first_file_upload_btn.PostedFile.FileName;
                     string filepath = "~/pictures/product/" + first_file_upload_btn.FileName;
                     first_file_upload_btn.PostedFile.SaveAs(Server.MapPath("~/pictures/product/") + filename);
-                    SqlCommand cmd = new SqlCommand("insert into product " + " (categoryid,product_name,short_des,long_des ,discount,stock,actual_price,selling_price,first_img) " +
-                     "values('" + category_ID.Text + "','" + product_name.Text + "','" + s_des.Text + "','" + l_des.InnerText + "','" + discount.Text + "','" + stock.Text + "','" + actual_price.Text + "','" + sell_price.Text + "','" + filepath + "')", con);
+                    SqlCommand cmd = new SqlCommand("insert into product " + " (category_id,product_name,short_des,long_des ,discount,stock,actual_price,selling_price,first_img) " +
+                     "values('" + category_ID.Text + "','" + product_name.Text + "','" + s_des.Text + "','" + long_des.Text + "','" + discount.Text + "','" + stock.Text + "','" + actual_price.Text + "','" + sell_price.Text + "','" + filepath + "')", con);
                     cmd.ExecuteNonQuery();
                     con.Close();
                     string message = "Your details have been saved successfully.";

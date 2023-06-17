@@ -123,7 +123,7 @@
                          <div class="col-xl-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h4 class="card-title">Category</h4>
+                                        <h4 class="card-title">Add Shipper</h4>
                                         <p class="card-title-desc">
                                         </p>
 
