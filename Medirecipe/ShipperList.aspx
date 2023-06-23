@@ -60,7 +60,66 @@
          <!--#include file="sidepanel.html"-->
                     <!-- Sidebar -->
      
-           
+           <header id="page-topbar">
+        <div class="navbar-header">
+            <div class="d-flex">
+                <div class="navbar-brand-box">
+
+                    <a href="homepages.aspx" class="logo logo-light">
+                        <span class="logo-sm">
+                            <img src="image/logo-transparent-png.png" alt="logo-sm-light" height="60">
+                        </span>
+                        <span class="logo-lg">
+                            <img src="image/logo-transparent-png.png" alt="logo-light" height="40">
+                        </span>
+                    </a>
+
+                </div>
+
+
+                <button type="button" class="btn btn-sm px-3 font-size-24 header-item waves-effect vertical-menu-btn" id="vertical-menu-btn">
+                    <i class="ri-menu-2-line align-middle"></i>
+                </button>
+                <div class="page-title-box align-self-center d-none d-md-block">
+                    <h4 class="page-title mb-0">Dashboard</h4>
+                </div>
+                <!--end page title-->
+            </div>
+
+
+
+            <div class="d-flex">
+                <div class="dropdown d-none d-lg-inline-block ms-1">
+                    <button type="button" class="btn header-item noti-icon waves-effect" data-toggle="fullscreen">
+                        <i class="ri-fullscreen-line"></i>
+                    </button>
+                </div>
+                <div class="dropdown d-inline-block">
+                    <button type="button" class="btn w-100 px-0 border-0" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="d-flex align-items-center">
+                            <div class="flex-shrink-0">
+                                <img src="assets/images/users/avatar-2.jpg" class="img-fluid header-profile-user rounded-circle" alt="">
+                            </div>
+
+                            <div class="flex-grow-1 ms-2 text-start">
+                                <span class="ms-1 fw-medium user-name-text">MediHub Admin</span>
+                            </div>
+
+                            <div class="flex-shrink-0 text-end">
+                                <!--<i class="mdi mdi-dots-vertical font-size-16"></i>-->
+                            </div>
+                        </span>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-end">
+                        <!-- item-->
+                       <asp:Button ID="add_btn" class="btn btn-primary" runat="server" text="logout" OnClick="logout_Click1"/><i class="mdi mdi-lock text-muted font-size-16 align-middle me-1"></i>
+                       <%-- <a class="dropdown-item" href="Login.aspx"><i class="mdi mdi-lock text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Log Out</span></a>--%>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </header>
             <div class="main-content">
 
                 <div class="page-content">
@@ -155,68 +214,72 @@
         
                                         <h4 class="card-title">Shippers List</h4>
                                          <asp:TextBox ID="txtSearch" runat="server" class="txtSearch"></asp:TextBox>
-                                        <asp:Button Text="Search" runat="server" OnClick="Search" Width="77px"/>
-                                        <asp:Button Text="Export" runat="server" OnClick="Export" Width="77px"/>
+                                        <asp:Button Text="Search" runat="server" CssClass="btn btn-primary btn-sm" OnClick="Search" Width="77px"/>
+                                        <asp:Button Text="Export" runat="server" CssClass="btn btn-primary btn-sm" OnClick="Export" Width="77px"/>
                                         <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                                            
-                <asp:GridView runat="server" ID="GridView1" AutoGenerateColumns="false" AllowPaging="True"
-                OnRowCancelingEdit="gvImage_RowCancelingEdit" DataKeyNames="shipper_id" PageSize="3" OnPageIndexChanging="OnPaging"
-                OnRowEditing="gvImage_RowEditing" OnRowUpdating="gvImage_RowUpdating" OnRowDeleting="gvImage_RowDeleting"
-                    OnRowDataBound="OnRowDataBound"
-                EmptyDataText="No records has been added." CssClass="table table-bordered table-hover display nowrap margin-top-7 w-p80 table-responsive" Width="1020px">
-                <Columns>
-                    <asp:TemplateField HeaderText="Id" HeaderStyle-Width="200px">
-                        <ItemTemplate>
-                            <%--<asp:Label ID="lblImgId" runat="server" Text='<%#Container.DataItemIndex+1%>'></asp:Label>--%>
-                            <asp:Label ID="lblImgId" runat="server" Text='<%# Eval("shipper_id") %>'></asp:Label>
-                        </ItemTemplate>
-                        <EditItemTemplate>
-                             <asp:TextBox ID="txt_Name" runat="server" autocomplete="off" Text='<%# Eval("shipper_name") %>'></asp:TextBox>
-                        </EditItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Name" HeaderStyle-Width="200px">
-                        <ItemTemplate>
-                            <asp:Label ID="name" runat="server" Text='<%# Eval("shipper_name") %>'></asp:Label>
-                        </ItemTemplate>
-                        <EditItemTemplate>
-                             <asp:TextBox ID="txt_Name" runat="server" autocomplete="off" Text='<%# Eval("shipper_name") %>'></asp:TextBox>
-                        </EditItemTemplate>
-                    </asp:TemplateField>
-                   
-                     <asp:TemplateField HeaderText="Name" HeaderStyle-Width="200px">
-                        <ItemTemplate>
-                            <asp:Label ID="price" runat="server" Text='<%# Eval("price") %>'></asp:Label>
-                        </ItemTemplate>
-                          <EditItemTemplate>
-                             <asp:TextBox ID="txt_Price" runat="server" autocomplete="off" Text='<%# Eval("price") %>'></asp:TextBox>
-                        </EditItemTemplate>
-                    </asp:TemplateField>
 
-                    <asp:TemplateField HeaderStyle-Width="150px" HeaderText="Action">
-                        <ItemTemplate>
-                            <asp:LinkButton ID="LkB1" runat="server" CssClass="btn btn-primary btn-sm" CommandName="Edit"><span class="badge badge-pill badge-danger"/>Edit</asp:LinkButton>
-                            <asp:LinkButton ID="LkB11" runat="server" CssClass="btn btn-primary btn-sm" CommandName="Delete"><span class="badge badge-pill badge-danger"/>Delete</asp:LinkButton>
-                        </ItemTemplate>
-                        <EditItemTemplate>
-                            <asp:LinkButton ID="LkB2" runat="server" CommandName="Update">Update</asp:LinkButton>
-                            <asp:LinkButton ID="LkB3" runat="server" CommandName="Cancel">Cancel</asp:LinkButton>
-                        </EditItemTemplate>
-                    </asp:TemplateField>
-                </Columns>
-            </asp:GridView>
-                                           
-                                           
-                                        </table>
-                                    </div>
+                                             <asp:ScriptManager ID="ScriptManager1" runat="server">
+                                            </asp:ScriptManager>
+			                                        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+
+                                                    <ContentTemplate>
+
+                                                        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="false" OnRowDataBound="OnRowDataBound"
+                                                            DataKeyNames="shipper_id" OnRowEditing="OnRowEditing" OnRowCancelingEdit="OnRowCancelingEdit"
+                                                            PageSize="4" AllowPaging="true"   OnPageIndexChanging="OnPaging" OnRowUpdating="OnRowUpdating" 
+                                                        OnRowDeleting="OnRowDeleting" EmptyDataText="No records has been added." CssClass="table table-bordered table-hover display nowrap margin-top-7 w-p80 table-responsive">
+                                                            <Columns>
+                                                                 <asp:TemplateField HeaderText="ID"   ItemStyle-Width="150" >
+                                                                    <ItemTemplate>
+                                                                        <asp:Label ID="id" runat="server"   Text='<%# Eval("shipper_id") %>'></asp:Label>
+                                                                    </ItemTemplate>
+                                                                     
+							                                         <HeaderStyle CssClass="bg-primary" />
+                                                                </asp:TemplateField>
+
+						                                        <asp:ImageField DataImageUrlField="image" HeaderText="Image" ControlStyle-CssClass="img-fluid header-profile-user rounded-circle"></asp:ImageField>    
+                                                                <asp:TemplateField HeaderText="Name"   ItemStyle-Width="150" >
+                                                                    <ItemTemplate>
+                                                                        <asp:Label ID="lblName" runat="server"   Text='<%# Eval("shipper_name") %>'></asp:Label>
+                                                                    </ItemTemplate>
+							                                         <HeaderStyle CssClass="bg-primary" />
+                                                                </asp:TemplateField>
+
+                                                                <asp:TemplateField HeaderText="Price" ItemStyle-Width="150">
+                                                                    <ItemTemplate>
+                                                                        <asp:Label ID="price" runat="server"  Text='<%# Eval("price") %>'></asp:Label>
+                                                                    </ItemTemplate>
+                                                                   <EditItemTemplate>
+                                                                    <asp:TextBox ID="price" width="70px"  runat="server" Text='<%#Eval("price") %>'/>
+                                                                     </EditItemTemplate>
+                                                                    <FooterTemplate>
+                                                                        <asp:TextBox ID="price" width="110px"  runat="server"/>
+                                                                        <asp:RequiredFieldValidator ID="vaddress" runat="server" ControlToValidate="price" Text="?" ValidationGroup="validaiton"/>
+                                                                    </FooterTemplate>
+							                                         <HeaderStyle CssClass="bg-primary" />
+                                                                </asp:TemplateField>
+
+                                                                
+                                                                <%--<asp:CommandField  HeaderText="Actions"  ButtonType="Link" ShowEditButton="true" ShowDeleteButton="true" 
+                                                                    ItemStyle-Width="150"  EditText="edit" DeleteText="delete" 
+                                                                    CancelText="cancel" UpdateText="update"/>
+									--%>
+                                                            </Columns>
+					                                         <HeaderStyle CssClass="bg-danger" />
+                                                        </asp:GridView>
+               
+                                                    </ContentTemplate>
+
+                                                </asp:UpdatePanel>
                                 </div>
                             </div> <!-- end col -->
                         </div> <!-- end row -->
 
-                <footer class="footer">
+               <footer class="footer">
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-sm-6">
-                                <script>document.write(new Date().getFullYear())</script> © MediRecipe
+                                <script>document.write(new Date().getFullYear())</script> © MediHub <i class="mdi mdi-heart text-danger"></i> MediRecipe | MediShop
                             </div>
                             <div class="col-sm-6">
                                 <div class="text-sm-end d-none d-sm-block">

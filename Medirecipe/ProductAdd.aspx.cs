@@ -14,6 +14,7 @@ namespace Medirecipe
     public partial class ProductAdd : System.Web.UI.Page
     {
         string constr = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
+        SqlConnection con = new SqlConnection();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -21,6 +22,11 @@ namespace Medirecipe
                 getcategory();
 
             }
+            if (Session["user"] == null)
+            {
+                Response.Redirect("Login.aspx");
+            }
+           
             countproducts();
             countrecipe();
             countcategory();
@@ -110,9 +116,14 @@ namespace Medirecipe
         {
             SqlConnection con = new SqlConnection(constr);
             con.Open();
-            SqlCommand c = new SqlCommand("select COUNT(*) from orders", con);
+            SqlCommand c = new SqlCommand("select COUNT(*) from PrOrder", con);
             int? RowCount = (int?)c.ExecuteScalar();
             total_order.Text = RowCount.ToString();
+        }
+        protected void logout_Click1(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Response.Redirect("Login.aspx");
         }
     }
 }

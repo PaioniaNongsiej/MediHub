@@ -59,6 +59,66 @@
     <form id="form1" runat="server">
         <!--#include file="sidepanel.html"-->
                     <!-- Sidebar -->
+        <header id="page-topbar">
+        <div class="navbar-header">
+            <div class="d-flex">
+                <div class="navbar-brand-box">
+
+                    <a href="homepages.aspx" class="logo logo-light">
+                        <span class="logo-sm">
+                            <img src="image/logo-transparent-png.png" alt="logo-sm-light" height="60">
+                        </span>
+                        <span class="logo-lg">
+                            <img src="image/logo-transparent-png.png" alt="logo-light" height="40">
+                        </span>
+                    </a>
+
+                </div>
+
+
+                <button type="button" class="btn btn-sm px-3 font-size-24 header-item waves-effect vertical-menu-btn" id="vertical-menu-btn">
+                    <i class="ri-menu-2-line align-middle"></i>
+                </button>
+                <div class="page-title-box align-self-center d-none d-md-block">
+                    <h4 class="page-title mb-0">Dashboard</h4>
+                </div>
+                <!--end page title-->
+            </div>
+
+
+
+            <div class="d-flex">
+                <div class="dropdown d-none d-lg-inline-block ms-1">
+                    <button type="button" class="btn header-item noti-icon waves-effect" data-toggle="fullscreen">
+                        <i class="ri-fullscreen-line"></i>
+                    </button>
+                </div>
+                <div class="dropdown d-inline-block">
+                    <button type="button" class="btn w-100 px-0 border-0" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="d-flex align-items-center">
+                            <div class="flex-shrink-0">
+                                <img src="assets/images/users/avatar-2.jpg" class="img-fluid header-profile-user rounded-circle" alt="">
+                            </div>
+
+                            <div class="flex-grow-1 ms-2 text-start">
+                                <span class="ms-1 fw-medium user-name-text">MediHub Admin</span>
+                            </div>
+
+                            <div class="flex-shrink-0 text-end">
+                                <!--<i class="mdi mdi-dots-vertical font-size-16"></i>-->
+                            </div>
+                        </span>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-end">
+                        <!-- item-->
+                       <asp:Button ID="add_btn" class="btn btn-primary" runat="server" text="logout" OnClick="logout_Click1"/><i class="mdi mdi-lock text-muted font-size-16 align-middle me-1"></i>
+                       <%-- <a class="dropdown-item" href="Login.aspx"><i class="mdi mdi-lock text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Log Out</span></a>--%>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </header>
         <div class="main-content">
 
                 <div class="page-content">
@@ -150,15 +210,15 @@
         
                                         <h4 class="card-title">Recipe List</h4>
                                          <asp:TextBox ID="txtSearch" runat="server" class="txtSearch"></asp:TextBox>
-                                        <asp:Button Text="Search" runat="server" OnClick="Search" Width="77px"/>
-                                        <asp:Button Text="Export" runat="server" OnClick="Export" Width="77px"/>
+                                        <asp:Button Text="Search" CssClass="btn btn-primary btn-sm" runat="server" OnClick="Search" Width="77px"/>
+                                        <asp:Button Text="Export" CssClass="btn btn-primary btn-sm" runat="server" OnClick="Export" Width="77px"/>
                                         <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                         <div>
                                             <asp:GridView runat="server" ID="GridView1" AutoGenerateColumns="false" AllowPaging="True"
                                                 OnRowCancelingEdit="gvImage_RowCancelingEdit" DataKeyNames="recipe_id" PageSize="3" OnPageIndexChanging="OnPaging"
                                                 OnRowEditing="gvImage_RowEditing" OnRowDeleting="gvImage_RowDeleting"
                                                  OnRowCommand="GridView1_RowCommand" 
-                                                EmptyDataText="No records has been added." CssClass="table table-bordered table-hover display nowrap margin-top-7 w-p80 table-responsive" Width="1020px">
+                                                EmptyDataText="No records has been added." CssClass="table table-bordered table-hover display nowrap margin-top-7 w-p80 table-responsive">
                                                 <Columns>
                                                    <asp:BoundField DataField="recipe_id" HeaderText="Product Id" /> 
                                                     <asp:TemplateField HeaderText="Name" HeaderStyle-Width="200px">
@@ -231,7 +291,7 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-sm-6">
-                                <script>document.write(new Date().getFullYear())</script> © MediRecipe
+                                <script>document.write(new Date().getFullYear())</script> © MediHub <i class="mdi mdi-heart text-danger"></i> MediRecipe | MediShop
                             </div>
                             <div class="col-sm-6">
                                 <div class="text-sm-end d-none d-sm-block">

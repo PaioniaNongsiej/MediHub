@@ -14,12 +14,18 @@ namespace Medirecipe
     public partial class RecipeAdd : System.Web.UI.Page
     {
         string constr = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
+        SqlConnection con = new SqlConnection();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 
             }
+            if (Session["user"] == null)
+            {
+                Response.Redirect("Login.aspx");
+            }
+            
             countproducts();
             countrecipe();
             countcategory();
@@ -31,17 +37,7 @@ namespace Medirecipe
            
             SqlConnection con = new SqlConnection(constr);
             con.Open();
-            //SqlCommand checkproduct = new SqlCommand("select * from product where product_id='" + product_id.Text + "'", con);
-            //SqlDataAdapter da = new SqlDataAdapter(checkproduct);
-            //DataTable dt = new DataTable();
-            //da.Fill(dt);
-
-            //if (dt.Rows.Count > 0)
-            //{
-            //    Response.Write(" <script> alert(' product Alredy Exists')</script>");
-
-            //    Response.Redirect("admin.aspx");
-            //}
+           
             if (first_file_upload_btn.HasFile)
             {
                 {
@@ -95,9 +91,14 @@ namespace Medirecipe
         {
             SqlConnection con = new SqlConnection(constr);
             con.Open();
-            SqlCommand c = new SqlCommand("select COUNT(*) from orders", con);
+            SqlCommand c = new SqlCommand("select COUNT(*) from PrOrder", con);
             int? RowCount = (int?)c.ExecuteScalar();
             total_order.Text = RowCount.ToString();
+        }
+        protected void logout_Click1(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Response.Redirect("Login.aspx");
         }
     }
 }

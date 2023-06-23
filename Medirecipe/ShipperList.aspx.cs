@@ -8,50 +8,39 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.Data;
 using System.IO;
+using System.Drawing;
+using System.Web.Security;
 
 namespace Medirecipe
 {
     public partial class ShipperList : System.Web.UI.Page
     {
         string constr = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
-        SqlConnection con;
-        SqlDataAdapter da;
-        DataSet ds;
-       
+        SqlConnection con = new SqlConnection();
+        SqlDataAdapter adapt;
+        DataTable dt;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            if (!this.IsPostBack)
+            if (!IsPostBack)
             {
-                this.BindData();
+                this.BindGrid();
             }
-            else
+            if (Session["user"] == null)
             {
-                con = new SqlConnection(constr);
-                con.Close();
-
-
+                Response.Redirect("Login.aspx");
             }
-            if (this.Page.PreviousPage != null)
-            {
-                GridView GridView1 = (GridView)this.Page.PreviousPage.FindControl("GridView1");
-            }
-            if (this.Page.PreviousPage != null)
-            {
-                Control ContentPlaceHolder1 = this.Page.PreviousPage.Master.FindControl("ContentPlaceHolder1");
-                GridView GridView1 = (GridView)ContentPlaceHolder1.FindControl("GridView1");
-            }
+           
             countproducts();
             countrecipe();
             countcategory();
             countorder();
             Search();
         }
-
-        protected void BindData()
+        private void BindGrid()
         {
             string constr = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
-            string query = "SELECT shipper_id,shipper_name,price  FROM shipper";
+            string query = "select shipper_id, shipper_name, price, image from shipper;";
             using (SqlConnection con = new SqlConnection(constr))
             {
                 using (SqlDataAdapter sda = new SqlDataAdapter(query, con))
@@ -65,6 +54,7 @@ namespace Medirecipe
                 }
             }
         }
+
         private void Search()
         {
             string constr = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
@@ -105,7 +95,7 @@ namespace Medirecipe
         protected void OnPaging(object sender, GridViewPageEventArgs e)
         {
             GridView1.PageIndex = e.NewPageIndex;
-            this.BindData();
+            this.BindGrid();
         }
         protected void Export(object sender, EventArgs e)
         {
@@ -118,7 +108,7 @@ namespace Medirecipe
             Response.ClearContent();
             Response.ClearHeaders();
             Response.Charset = "";
-            string FileName = "Shipper" + DateTime.Now + ".xls";
+            string FileName = "Shippers" + DateTime.Now + ".xls";
             StringWriter strwritter = new StringWriter();
             HtmlTextWriter htmltextwrtter = new HtmlTextWriter(strwritter);
             Response.Cache.SetCacheability(HttpCacheability.NoCache);
@@ -131,60 +121,43 @@ namespace Medirecipe
             Response.End();
 
         }
-
-        protected void gvCustomers_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void gvImage_RowEditing(object sender, GridViewEditEventArgs e)
+        protected void OnRowEditing(object sender, GridViewEditEventArgs e)
         {
             GridView1.EditIndex = e.NewEditIndex;
-            BindData();
+            this.BindGrid();
+        }
+        protected void OnRowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            string shipper_id = GridView1.DataKeys[e.RowIndex].Values["shipper_id"].ToString();
+            
+            TextBox price = (TextBox)GridView1.Rows[e.RowIndex].FindControl("price");
+            dt = new DataTable();
+            con = new SqlConnection(constr);
+            con.Open();
+            SqlCommand cmd = new SqlCommand("update shipper set price='" + price.Text + "' where shipper_id=" + shipper_id, con);
+            cmd.ExecuteNonQuery();
+            con.Close();
 
+            GridView1.EditIndex = -1;
+            
+            this.BindGrid();
         }
-        // update event
-        protected void gvImage_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        protected void OnRowCancelingEdit(object sender, EventArgs e)
         {
-            GridViewRow row = GridView1.Rows[e.RowIndex];
-            int shipper_id = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Values[0]);
-            string shipper_name = (row.FindControl("txt_Name") as TextBox).Text;
-            string price = (row.FindControl("txt_Price") as TextBox).Text;
-            string query = "UPDATE shipper SET  shipper_name=@Sname, price=@Sprice WHERE shipper_id=@SID";
+            GridView1.EditIndex = -1;
+            this.BindGrid();
+        }
+
+        protected void OnRowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            int id = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Values[0]);
+            string query = "DELETE FROM shipper WHERE shipper_id=@id";
             string constr = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
                 using (SqlCommand cmd = new SqlCommand(query))
                 {
-                    cmd.Parameters.AddWithValue("@SID", shipper_id);
-                    cmd.Parameters.AddWithValue("@Sname", shipper_name);
-                    cmd.Parameters.AddWithValue("@Sprice", price);
-                    cmd.Connection = con;
-                    con.Open();
-                    cmd.ExecuteNonQuery();
-                    con.Close();
-                }
-            }
-            GridView1.EditIndex = -1;
-            this.BindData();
-        }
-        // cancel edit event
-        protected void gvImage_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
-        {
-            GridView1.EditIndex = -1;
-            BindData();
-        }
-        //delete event
-        protected void gvImage_RowDeleting(object sender, GridViewDeleteEventArgs e)
-        {
-            int shipper_id = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Values[0]);
-            string query = "DELETE FROM shipper WHERE shipper_id=@SID";
-            string constr = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
-            using (SqlConnection con = new SqlConnection(constr))
-            {
-                using (SqlCommand cmd = new SqlCommand(query))
-                {
-                    cmd.Parameters.AddWithValue("@SID", shipper_id);
+                    cmd.Parameters.AddWithValue("@id", id);
                     cmd.Connection = con;
                     con.Open();
                     cmd.ExecuteNonQuery();
@@ -192,33 +165,19 @@ namespace Medirecipe
                 }
             }
 
-            this.BindData();
+            this.BindGrid();
         }
+
         protected void OnRowDataBound(object sender, GridViewRowEventArgs e)
         {
-            if (e.Row.RowType == DataControlRowType.DataRow && e.Row.RowIndex != GridView1.EditIndex)
-            {
-                (e.Row.Cells[3].Controls[2] as LinkButton).Attributes["onclick"] = "return confirm('Do you want to delete this row?');";
-               
-            }
+            //if (e.Row.RowType == DataControlRowType.DataRow && e.Row.RowIndex != GridView1.EditIndex)
+            //{
+            //    (e.Row.Cells[4].Controls[2] as LinkButton).Attributes["onclick"] = "return confirm('Do you want to delete this row?');";
+            //}
         }
-       
-        protected void gvDetails_PageIndexChanging(object sender, GridViewPageEventArgs e)
-        {
-            GridView1.PageIndex = e.NewPageIndex;
-            BindData();
-            //GridView1.DataBind();
-        }
-
-        protected void Redirect(object sender, EventArgs e)
-        {
-            Server.Transfer("CategoryAdd.aspx");
-        }
-
 
         public void countproducts()
         {
-
             SqlConnection con = new SqlConnection(constr);
             con.Open();
             SqlCommand c = new SqlCommand("select COUNT(*) from product", con);
@@ -248,9 +207,14 @@ namespace Medirecipe
         {
             SqlConnection con = new SqlConnection(constr);
             con.Open();
-            SqlCommand c = new SqlCommand("select COUNT(*) from orders", con);
+            SqlCommand c = new SqlCommand("select COUNT(*) from PrOrder", con);
             int? RowCount = (int?)c.ExecuteScalar();
             total_order.Text = RowCount.ToString();
+        }
+        protected void logout_Click1(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Response.Redirect("Login.aspx");
         }
     }
 }

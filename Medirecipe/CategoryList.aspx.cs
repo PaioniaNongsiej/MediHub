@@ -14,7 +14,7 @@ namespace Medirecipe
     public partial class UserList : System.Web.UI.Page
     {
         string constr = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
-        SqlConnection con;
+        SqlConnection con = new SqlConnection();
         SqlDataAdapter da;
         DataSet ds;
         SqlCommand cmd;
@@ -32,6 +32,7 @@ namespace Medirecipe
 
 
             }
+           
             if (this.Page.PreviousPage != null)
             {
                 GridView GridView1 = (GridView)this.Page.PreviousPage.FindControl("GridView1");
@@ -41,6 +42,11 @@ namespace Medirecipe
                 Control ContentPlaceHolder1 = this.Page.PreviousPage.Master.FindControl("ContentPlaceHolder1");
                 GridView GridView1 = (GridView)ContentPlaceHolder1.FindControl("GridView1");
             }
+            if (Session["user"] == null)
+            {
+                Response.Redirect("Login.aspx");
+            }
+           
             countproducts();
             countrecipe();
             countcategory();
@@ -236,9 +242,14 @@ namespace Medirecipe
         {
             SqlConnection con = new SqlConnection(constr);
             con.Open();
-            SqlCommand c = new SqlCommand("select COUNT(*) from orders", con);
+            SqlCommand c = new SqlCommand("select COUNT(*) from PrOrder", con);
             int? RowCount = (int?)c.ExecuteScalar();
             total_order.Text = RowCount.ToString();
+        }
+        protected void logout_Click1(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Response.Redirect("Login.aspx");
         }
     }
 }

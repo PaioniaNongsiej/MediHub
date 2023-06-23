@@ -14,12 +14,18 @@ namespace Medirecipe
     public partial class ShipperAdd : System.Web.UI.Page
     {
         string constr = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
+        SqlConnection con = new SqlConnection();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
               
             }
+            if (Session["user"] == null)
+            {
+                Response.Redirect("Login.aspx");
+            }
+            
             countproducts();
             countrecipe();
             countcategory();
@@ -29,24 +35,33 @@ namespace Medirecipe
         {
             SqlConnection con = new SqlConnection(constr);
             con.Open();
-            //if (first_file_upload_btn.HasFile)
-            //{
+            
+            if (first_file_upload_btn.HasFile)
             {
-                //string filename = first_file_upload_btn.PostedFile.FileName;
-                //string filepath = "~/pictures/category/" + first_file_upload_btn.FileName;
-                //first_file_upload_btn.PostedFile.SaveAs(Server.MapPath("~/pictures/category/") + filename);
-                SqlCommand cmd = new SqlCommand("insert into shipper " + " (shipper_name, price) " +
-                 "values('" + shipper_name.Text + "','" + shipping_price.Text + "')", con);
-                cmd.ExecuteNonQuery();
-                con.Close();
-                string message = "Your details have been saved successfully.";
-                string script = "window.onload = function(){ alert('";
-                script += message;
-                script += "');";
-                script += "window.location = '";
-                script += Request.Url.AbsoluteUri;
-                script += "'; }";
-                ClientScript.RegisterStartupScript(this.GetType(), "SuccessMessage", script, true);
+                {
+                    try
+                    {
+                        string filename = first_file_upload_btn.PostedFile.FileName;
+                        string filepath = "~/pictures/shipper/" + first_file_upload_btn.FileName;
+                        first_file_upload_btn.PostedFile.SaveAs(Server.MapPath("~/pictures/shipper/") + filename);
+                        //SqlCommand cmd = new SqlCommand("INSERTINTO TEST (name,fathername) VALUES('" + TextBox1.Text + "','" + TextBox1.Text + "')", con);
+                        SqlCommand cmd = new SqlCommand("insert into shipper(shipper_name,description,price,image)values('" +shipper_name.Text + "','" + description.Text+ "','" + shipping_price.Text + "','"+filepath+"')", con);
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                        string message = "Your details have been saved successfully.";
+                        string script = "window.onload = function(){ alert('";
+                        script += message;
+                        script += "');";
+                        script += "window.location = '";
+                        script += Request.Url.AbsoluteUri;
+                        script += "'; }";
+                        ClientScript.RegisterStartupScript(this.GetType(), "SuccessMessage", script, true);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                }
             }
 
         }
@@ -82,9 +97,14 @@ namespace Medirecipe
         {
             SqlConnection con = new SqlConnection(constr);
             con.Open();
-            SqlCommand c = new SqlCommand("select COUNT(*) from orders", con);
+            SqlCommand c = new SqlCommand("select COUNT(*) from PrOrder", con);
             int? RowCount = (int?)c.ExecuteScalar();
             total_order.Text = RowCount.ToString();
+        }
+        protected void logout_Click1(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Response.Redirect("Login.aspx");
         }
     }
 }

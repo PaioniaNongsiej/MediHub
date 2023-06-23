@@ -296,7 +296,7 @@
     <Content Include="assets\libs\twitter-bootstrap-wizard\prettify.css" />
     <Content Include="assets\libs\twitter-bootstrap-wizard\prettify.js" />
     <Content Include="CategoryAdd.aspx" />
-    <Content Include="category_table.aspx" />
+    <Content Include="ComingSoon.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -305,7 +305,9 @@
     <Content Include="Content\Site.css" />
     <Content Include="css\CSS.css" />
     <Content Include="css\style.css" />
+    <Content Include="CustomerView.aspx" />
     <Content Include="Default.aspx" />
+    <Content Include="demoCustomerform.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -343,15 +345,23 @@
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="homepages.aspx" />
     <Content Include="image\backgroud.jpg" />
+    <Content Include="image\BlueDart.jpg" />
     <Content Include="image\database_design.png" />
     <Content Include="image\db_design.png" />
     <Content Include="image\delete.png" />
+    <Content Include="image\delhivery.jpeg" />
     <Content Include="image\edit.png" />
+    <Content Include="image\light.png" />
     <Content Include="image\log.png" />
+    <Content Include="image\logo-transparent-big.png" />
+    <Content Include="image\logo-transparent-png.png" />
     <Content Include="image\logouser.png" />
     <Content Include="image\medi logo.jpg" />
     <Content Include="image\region.jpg" />
     <Content Include="image\register.jpeg" />
+    <Content Include="image\shiprocket.jpg" />
+    <Content Include="image\Xpressbees.jpg" />
+    <Content Include="Login.aspx" />
     <Content Include="ProductAdd.aspx" />
     <Content Include="ProductAlter.aspx" />
     <Content Include="ProductList.aspx" />
@@ -390,11 +400,13 @@
     <Content Include="Scripts\WebForms\WebForms.js" />
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
+    <Content Include="ShipItem.aspx" />
     <Content Include="ShipperAdd.aspx" />
     <Content Include="ShipperList.aspx" />
     <Content Include="sidepanel.html" />
+    <Content Include="SidePanelDark.aspx" />
+    <Content Include="SidePanelLight.aspx" />
     <Content Include="Site.Master" />
-    <Content Include="table_demo.aspx" />
     <Content Include="CategoryList.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
@@ -418,12 +430,12 @@
     <Compile Include="CategoryAdd.aspx.designer.cs">
       <DependentUpon>CategoryAdd.aspx</DependentUpon>
     </Compile>
-    <Compile Include="category_table.aspx.cs">
-      <DependentUpon>category_table.aspx</DependentUpon>
+    <Compile Include="ComingSoon.aspx.cs">
+      <DependentUpon>ComingSoon.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="category_table.aspx.designer.cs">
-      <DependentUpon>category_table.aspx</DependentUpon>
+    <Compile Include="ComingSoon.aspx.designer.cs">
+      <DependentUpon>ComingSoon.aspx</DependentUpon>
     </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
@@ -432,12 +444,26 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
+    <Compile Include="CustomerView.aspx.cs">
+      <DependentUpon>CustomerView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomerView.aspx.designer.cs">
+      <DependentUpon>CustomerView.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="demoCustomerform.aspx.cs">
+      <DependentUpon>demoCustomerform.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="demoCustomerform.aspx.designer.cs">
+      <DependentUpon>demoCustomerform.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -448,6 +474,13 @@
     </Compile>
     <Compile Include="homepages.aspx.designer.cs">
       <DependentUpon>homepages.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="ProductAdd.aspx.cs">
       <DependentUpon>ProductAdd.aspx</DependentUpon>
@@ -492,6 +525,13 @@
     <Compile Include="RecipeList.aspx.designer.cs">
       <DependentUpon>RecipeList.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ShipItem.aspx.cs">
+      <DependentUpon>ShipItem.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ShipItem.aspx.designer.cs">
+      <DependentUpon>ShipItem.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ShipperAdd.aspx.cs">
       <DependentUpon>ShipperAdd.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -506,6 +546,20 @@
     <Compile Include="ShipperList.aspx.designer.cs">
       <DependentUpon>ShipperList.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SidePanelDark.aspx.cs">
+      <DependentUpon>SidePanelDark.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SidePanelDark.aspx.designer.cs">
+      <DependentUpon>SidePanelDark.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SidePanelLight.aspx.cs">
+      <DependentUpon>SidePanelLight.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SidePanelLight.aspx.designer.cs">
+      <DependentUpon>SidePanelLight.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -519,13 +573,6 @@
     </Compile>
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
-    </Compile>
-    <Compile Include="table_demo.aspx.cs">
-      <DependentUpon>table_demo.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="table_demo.aspx.designer.cs">
-      <DependentUpon>table_demo.aspx</DependentUpon>
     </Compile>
     <Compile Include="CategoryList.aspx.cs">
       <DependentUpon>CategoryList.aspx</DependentUpon>
@@ -547,6 +594,7 @@
     <Folder Include="pictures\category\" />
     <Folder Include="pictures\product\" />
     <Folder Include="pictures\recipe\" />
+    <Folder Include="pictures\shipper\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
