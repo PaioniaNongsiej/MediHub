@@ -26,17 +26,7 @@ namespace Medirecipe
 
             SqlConnection con = new SqlConnection(constr);
             con.Open();
-            //SqlCommand checkproduct = new SqlCommand("select * from product where product_id='" + product_id.Text + "'", con);
-            //SqlDataAdapter da = new SqlDataAdapter(checkproduct);
-            //DataTable dt = new DataTable();
-            //da.Fill(dt);
-
-            //if (dt.Rows.Count > 0)
-            //{
-            //    Response.Write(" <script> alert(' product Alredy Exists')</script>");
-
-            //    Response.Redirect("admin.aspx");
-            //}
+            
             if (first_file_upload_btn.HasFile)
             {
                 {

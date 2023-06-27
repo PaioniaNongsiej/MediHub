@@ -408,6 +408,7 @@
     <Content Include="SidePanelLight.aspx" />
     <Content Include="Site.Master" />
     <Content Include="CategoryList.aspx" />
+    <Content Include="user\registration.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -580,6 +581,13 @@
     </Compile>
     <Compile Include="CategoryList.aspx.designer.cs">
       <DependentUpon>CategoryList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="user\registration.aspx.cs">
+      <DependentUpon>registration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user\registration.aspx.designer.cs">
+      <DependentUpon>registration.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>

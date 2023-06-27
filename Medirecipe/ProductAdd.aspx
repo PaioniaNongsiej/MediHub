@@ -239,12 +239,7 @@
                                                        
                                                     </div>
                                                 </div>
-                                                <div class="col-md-4">
-                                                    <div class="mb-3">
-                                                        <label>Discount</label>
-                                                       <asp:TextBox ID="discount" class="form-control"  runat="server" type="number" placeholder="discount percentage"></asp:TextBox>
-                                                    </div>
-                                                </div>
+                                                
 
                                              <div class="col-md-4">
                                                     <div class="mb-3">
@@ -253,12 +248,7 @@
                                                     </div>
                                                 </div>
                                        </div>
-                                        <div class="col-md-4">
-                                                    <div class="mb-3">
-                                                        <label>Stock</label>
-                                                           <asp:TextBox ID="stock" runat="server" min="20" type="varchar" class="form-control"   placeholder="item in stocks (minimum 20)"></asp:TextBox>
-                                                    </div>
-                                         </div>
+                                       
 
                                         <div class="col-md-4">
                                         <div class="mb-3">
