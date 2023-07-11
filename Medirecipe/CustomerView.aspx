@@ -225,9 +225,11 @@
                                  <div class="card card-body">
 						            <asp:Image ID="Image1" runat="server" ImageUrl='<%# Bind("picture", "{0}" ) %>' class="img-fluid" />
 						            <b>Name:</b> <asp:Label ID="name"  runat="server" Text='<%# Eval("fullname") %>'></asp:Label>
-						            <b>UserName:</b><asp:Label ID="degn" runat="server" Text='<%# Eval("username")%>'></asp:Label>
+						            <%--<b>UserName:</b><asp:Label ID="degn" runat="server" Text='<%# Eval("username")%>'></asp:Label>--%>
 						            <b>Email ID:</b><asp:Label ID="email"  runat="server" Text='<%# Eval("email")%>'></asp:Label>
-						            <b>Country: </b><asp:Label ID="country" runat="server" Text='<%# Eval("country")%>'></asp:Label>
+						            <b>Mobile: </b><asp:Label ID="country" runat="server" Text='<%# Eval("mobile")%>'></asp:Label>
+                                    <b>Address: </b><asp:Label ID="Label1" runat="server" Text='<%# Eval("address")%>'></asp:Label>
+                                     <asp:Label ID="Label2" runat="server" Text='<%# Eval("pincode")%>'></asp:Label>
                                  </div>
                              </div>
 					     </div>

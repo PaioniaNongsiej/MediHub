@@ -246,14 +246,7 @@
                                                             <asp:TextBox ID="long_des" runat="server" Text='<%# Eval("long_des") %>'></asp:TextBox>
                                                         </EditItemTemplate>
                                                     </asp:TemplateField>
-                                                    <asp:TemplateField HeaderText="Discount" HeaderStyle-Width="200px">
-                                                        <ItemTemplate>
-                                                            <asp:Label ID="lbldiscount" runat="server" Text='<%# Eval("discount") %>'></asp:Label>
-                                                        </ItemTemplate>
-                                                        <EditItemTemplate>
-                                                            <asp:TextBox ID="discount" runat="server" Text='<%# Eval("discount") %>'></asp:TextBox>
-                                                        </EditItemTemplate>
-                                                    </asp:TemplateField>
+                                                  
                                                      <asp:TemplateField HeaderText="Actual Price" HeaderStyle-Width="200px">
                                                         <ItemTemplate>
                                                             <asp:Label ID="lblAprice" runat="server" Text='<%# Eval("actual_price") %>'></asp:Label>
@@ -268,15 +261,6 @@
                                                         </ItemTemplate>
                                                         <EditItemTemplate>
                                                             <asp:TextBox ID="s_price" runat="server" Text='<%# Eval("selling_price") %>'></asp:TextBox>
-                                                        </EditItemTemplate>
-                                                    </asp:TemplateField>
-
-                                                     <asp:TemplateField HeaderText="Stock" HeaderStyle-Width="200px">
-                                                        <ItemTemplate>
-                                                            <asp:Label ID="lblstock" runat="server" Text='<%# Eval("stock") %>'></asp:Label>
-                                                        </ItemTemplate>
-                                                        <EditItemTemplate>
-                                                            <asp:TextBox ID="stock" runat="server" Text='<%# Eval("stock") %>'></asp:TextBox>
                                                         </EditItemTemplate>
                                                     </asp:TemplateField>
 

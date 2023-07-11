@@ -1,10 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ShipperList.aspx.cs" EnableEventValidation="false" Inherits="Medirecipe.ShipperList" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ShippersList.aspx.cs" Inherits="Medirecipe.ShippersList" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-   <title>MediRecipe | Shipper List</title>
+    <title>MediRecipe | Shipper List</title>
        
         
         <!-- App favicon -->
@@ -57,9 +57,10 @@
 </head>
 <body data-sidebar="colored">
     <form id="form1" runat="server">
-         <!--#include file="sidepanel.html"-->
+        <!--#include file="sidepanel.html"-->
                     <!-- Sidebar -->
-     
+
+             
            <header id="page-topbar">
         <div class="navbar-header">
             <div class="d-flex">
@@ -106,14 +107,14 @@
                             </div>
 
                             <div class="flex-shrink-0 text-end">
-                                <!--<i class="mdi mdi-dots-vertical font-size-16"></i>-->
+                               
                             </div>
                         </span>
                     </button>
                     <div class="dropdown-menu dropdown-menu-end">
                         <!-- item-->
                        <asp:Button ID="add_btn" class="btn btn-primary" runat="server" text="logout" OnClick="logout_Click1"/><i class="mdi mdi-lock text-muted font-size-16 align-middle me-1"></i>
-                       <%-- <a class="dropdown-item" href="Login.aspx"><i class="mdi mdi-lock text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Log Out</span></a>--%>
+                      
                     </div>
 
                 </div>
@@ -205,77 +206,73 @@
                         </div>
                         <!-- END ROW -->
 
-                         
-                         <!-- GridView -->
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card">
-                                    <div class="card-body">
-        
-                                        <h4 class="card-title">Shippers List</h4>
-                                         <asp:TextBox ID="txtSearch" runat="server" class="txtSearch"></asp:TextBox>
-                                        <asp:Button Text="Search" runat="server" CssClass="btn btn-primary btn-sm" OnClick="Search" Width="77px"/>
-                                        <asp:Button Text="Export" runat="server" CssClass="btn btn-primary btn-sm" OnClick="Export" Width="77px"/>
-                                        <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+          <!-- GRIDVIEW -->
+        <div class="row">
+            <div class="col-12">
+                  <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Shippers List</h4>
+                            <p class="card-title">&nbsp;</p>
+                                         
+     
+             <asp:GridView ID="gridView" DataKeyNames="shipper_id" runat="server"
+                        AutoGenerateColumns="false" ShowFooter="true" HeaderStyle-Font-Bold="true"
+                        onrowcancelingedit="gridView_RowCancelingEdit"
+                        onrowdeleting="gridView_RowDeleting"
+                        onrowediting="gridView_RowEditing"
+                        onrowupdating="gridView_RowUpdating"
+                        OnRowDataBound="gridView_RowDataBound" 
+                        CssClass="table table-bordered table-hover display nowrap margin-top-7 w-p80 table-responsive"
+                        EmptyDataText="No records has been added.">
+                <Columns>
+                <asp:TemplateField HeaderText="id">
+                    <ItemTemplate>
+                        <asp:Label ID="shipper_id" runat="server" Text='<%#Eval("shipper_id") %>'/>
+                    </ItemTemplate>
+   
+                </asp:TemplateField>
+    
+                     <asp:ImageField DataImageUrlField="image" HeaderText="Image" ControlStyle-CssClass="img-fluid header-profile-user rounded-circle"></asp:ImageField>    
 
-                                             <asp:ScriptManager ID="ScriptManager1" runat="server">
-                                            </asp:ScriptManager>
-			                                        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-
-                                                    <ContentTemplate>
-
-                                                        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="false" OnRowDataBound="OnRowDataBound"
-                                                            DataKeyNames="shipper_id" OnRowEditing="OnRowEditing" OnRowCancelingEdit="OnRowCancelingEdit"
-                                                            PageSize="4" AllowPaging="true"   OnPageIndexChanging="OnPaging" OnRowUpdating="OnRowUpdating" 
-                                                        OnRowDeleting="OnRowDeleting" EmptyDataText="No records has been added." CssClass="table table-bordered table-hover display nowrap margin-top-7 w-p80 table-responsive">
-                                                            <Columns>
-                                                                 <asp:TemplateField HeaderText="ID"   ItemStyle-Width="150" >
-                                                                    <ItemTemplate>
-                                                                        <asp:Label ID="id" runat="server"   Text='<%# Eval("shipper_id") %>'></asp:Label>
-                                                                    </ItemTemplate>
-                                                                     
-							                                         <HeaderStyle CssClass="bg-primary" />
-                                                                </asp:TemplateField>
-
-						                                        <asp:ImageField DataImageUrlField="image" HeaderText="Image" ControlStyle-CssClass="img-fluid header-profile-user rounded-circle"></asp:ImageField>    
-                                                                <asp:TemplateField HeaderText="Name"   ItemStyle-Width="150" >
-                                                                    <ItemTemplate>
-                                                                        <asp:Label ID="lblName" runat="server"   Text='<%# Eval("shipper_name") %>'></asp:Label>
-                                                                    </ItemTemplate>
-							                                         <HeaderStyle CssClass="bg-primary" />
-                                                                </asp:TemplateField>
-
-                                                                <asp:TemplateField HeaderText="Price" ItemStyle-Width="150">
-                                                                    <ItemTemplate>
-                                                                        <asp:Label ID="price" runat="server"  Text='<%# Eval("price") %>'></asp:Label>
-                                                                    </ItemTemplate>
-                                                                   <EditItemTemplate>
-                                                                    <asp:TextBox ID="price" width="70px"  runat="server" Text='<%#Eval("price") %>'/>
-                                                                     </EditItemTemplate>
-                                                                    <FooterTemplate>
-                                                                        <asp:TextBox ID="price" width="110px"  runat="server"/>
-                                                                        <asp:RequiredFieldValidator ID="vaddress" runat="server" ControlToValidate="price" Text="?" ValidationGroup="validaiton"/>
-                                                                    </FooterTemplate>
-							                                         <HeaderStyle CssClass="bg-primary" />
-                                                                </asp:TemplateField>
-
-                                                                
-                                                                <%--<asp:CommandField  HeaderText="Actions"  ButtonType="Link" ShowEditButton="true" ShowDeleteButton="true" 
-                                                                    ItemStyle-Width="150"  EditText="edit" DeleteText="delete" 
-                                                                    CancelText="cancel" UpdateText="update"/>
-									--%>
-                                                            </Columns>
-					                                         <HeaderStyle CssClass="bg-danger" />
-                                                        </asp:GridView>
-               
-                                                    </ContentTemplate>
-
-                                                </asp:UpdatePanel>
-                                </div>
-                            </div> <!-- end col -->
-                        </div> <!-- end row -->
-
-               <footer class="footer">
+                 <asp:TemplateField HeaderText="shipper_name">
+                      <ItemTemplate>
+                         <asp:Label ID="shipper_name" runat="server" Text='<%#Eval("shipper_name") %>'/>
+                     </ItemTemplate>
+    
+                 </asp:TemplateField>
+                 <asp:TemplateField HeaderText="price">
+                     <ItemTemplate>
+                         <asp:Label ID="price" runat="server" Text='<%#Eval("price") %>'/>
+                     </ItemTemplate>
+                     <EditItemTemplate>
+                         <asp:TextBox ID="price" width="70px"  runat="server" Text='<%#Eval("price") %>'/>
+                     </EditItemTemplate>
+   
+                 </asp:TemplateField>
+  
+                 <asp:TemplateField HeaderStyle-Width="150px" HeaderText="Action">
+                    <EditItemTemplate>
+                        <asp:Button ID="ButtonUpdate" runat="server" CssClass="btn btn-primary btn-sm" CommandName="Update"  Text="Update"  />
+                        <asp:Button ID="ButtonCancel" runat="server" CssClass="btn btn-primary btn-sm" CommandName="Cancel"  Text="Cancel" />
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:Button ID="ButtonEdit" runat="server" CssClass="btn btn-primary btn-sm" CommandName="Edit"  Text="Edit"  />
+                        <asp:Button ID="ButtonDelete" runat="server" CssClass="btn btn-primary btn-sm" CommandName="Delete"  Text="Delete"  />
+                    </ItemTemplate>
+    
+                 </asp:TemplateField>
+                 </Columns>
+                </asp:GridView>
+                        </div>
+                        <div >
+                        <br />    
+                        <asp:Label ID="lblmsg" runat="server"></asp:Label>
+       
+                         </div>
+                      </div>
+                </div>
+            </div>
+          <footer class="footer">
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-sm-6">
@@ -289,11 +286,10 @@
                         </div>
                     </div>
                 </footer>
-                
-            </div>
+
     </form>
-        
-    <div class="rightbar-overlay"></div>
+
+     <div class="rightbar-overlay"></div>
         <!-- Required datatable js -->
         <script src="assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
         <script src="assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>

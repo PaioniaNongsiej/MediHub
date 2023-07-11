@@ -65,9 +65,7 @@ namespace Medirecipe
             s_des.Text = dt.Rows[0]["short_des"].ToString();
             long_des.Text = dt.Rows[0]["long_des"].ToString();
             actual_price.Text = dt.Rows[0]["actual_price"].ToString();
-            discount.Text = dt.Rows[0]["discount"].ToString();
             sell_price.Text = dt.Rows[0]["selling_price"].ToString();
-            stock.Text = dt.Rows[0]["stock"].ToString();
             imagePreview.ImageUrl = dt.Rows[0]["first_img"].ToString();
         }
         protected void btnUpdate_Click(object sender, EventArgs e)
@@ -79,7 +77,7 @@ namespace Medirecipe
                 first_file_upload_btn.PostedFile.SaveAs(Server.MapPath("~/pictures/product/") + filename);
                 string constr = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
                 SqlConnection con = new SqlConnection(constr);
-                SqlCommand cmd = new SqlCommand("update product set product_name='" + product_name.Text + "',short_des = '" + s_des.Text + "',long_des = '" + long_des.Text + "',discount = '" + discount.Text + "',actual_price = '" + actual_price.Text + "',selling_price = '" + sell_price.Text + "',stock = '" + stock.Text + "',first_img = '" + filepath + "' where product_id=" + cid, con);
+                SqlCommand cmd = new SqlCommand("update product set product_name='" + product_name.Text + "',short_des = '" + s_des.Text + "',long_des = '" + long_des.Text +  "',actual_price = '" + actual_price.Text + "',selling_price = '" + sell_price.Text + "',first_img = '" + filepath + "' where product_id=" + cid, con);
                 con.Open();
                 int result = cmd.ExecuteNonQuery();
                 con.Close();

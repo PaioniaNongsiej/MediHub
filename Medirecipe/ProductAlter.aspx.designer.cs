@@ -150,15 +150,6 @@ namespace Medirecipe
         protected global::System.Web.UI.WebControls.TextBox actual_price;
 
         /// <summary>
-        /// discount control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox discount;
-
-        /// <summary>
         /// sell_price control.
         /// </summary>
         /// <remarks>
@@ -166,15 +157,6 @@ namespace Medirecipe
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox sell_price;
-
-        /// <summary>
-        /// stock control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox stock;
 
         /// <summary>
         /// category_ID control.

@@ -192,6 +192,8 @@
                                                     <div class="mb-3">
                                                         <label>Recipe Name</label>
                                                         <asp:TextBox ID="recipe_name" class="form-control"  runat="server" placeholder="recipe name"></asp:TextBox>   
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="recipe_name" ErrorMessage="Please enter the Recipe name"   
+                                                            ForeColor="Red"></asp:RequiredFieldValidator> 
                                                     </div>
                                                 </div>
 
@@ -199,6 +201,8 @@
                                                     <div class="mb-3">
                                                         <label>Servings</label>
                                                        <asp:TextBox ID="serving" runat="server" class="form-control" type="integer" placeholder="Servings" ></asp:TextBox>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="serving" ErrorMessage="Please enter the number of servings"   
+                                                            ForeColor="Red"></asp:RequiredFieldValidator>
                                                     </div>
                                                 </div>
 
@@ -206,6 +210,8 @@
                                                     <div class="mb-3">
                                                         <label>Caption</label>
                                                       <asp:TextBox ID="s_des" runat="server" class="form-control" placeholder="short line about the recipe(caption)" ></asp:TextBox>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="s_des" ErrorMessage="Please enter the caption"   
+                                                            ForeColor="Red"></asp:RequiredFieldValidator>
                                                     </div>
                                                 </div>
                                             </div>
@@ -213,13 +219,17 @@
                                          <div class="mb-3">
                                               <label>Ingredients</label>
                                           <textarea id="ingredient" runat="server" class="form-control" placeholder="ingredient"></textarea>
-                                            </div>
+                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="ingredient" ErrorMessage="Please enter the ingredients"   
+                                                            ForeColor="Red"></asp:RequiredFieldValidator>   
+                                         </div>
 
                                              <div class="mb-3">
                                               <label>Recipe Description</label>
                                           
                                               <textarea id="l_des" runat="server" class="form-control"  placeholder="detail description"></textarea>
-                                            </div>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="l_des" ErrorMessage="Please enter the description"   
+                                                            ForeColor="Red"></asp:RequiredFieldValidator>
+                                             </div>
                  
      <!-- product image -->
     <div class="product_info">
@@ -237,6 +247,8 @@
                                     <br/>
                                     <label class="custom-file-label">  
                                     <asp:FileUpload ID="first_file_upload_btn" runat="server" class="form-control"  onchange="ShowImagePreview(this);" />  
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="first_file_upload_btn" ErrorMessage="Please enter a recipe image"   
+                                                            ForeColor="Red"></asp:RequiredFieldValidator>
                                     </label>  
                                 </div>  
                             </div>  

@@ -45,7 +45,7 @@ namespace Paionia
         private void BindGrid()
         {
             string constr = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
-            string query = "select o.id,p.picture,p.fullname, o.order_date, o.order_total, o.payment_method, o.shipping_method, o.status from profile p inner join PrOrder o on p.id=o.id ;";
+            string query = "select P.fullname,P.picture,pr.payment_method,pr.shipping_method,pr.id,pr.order_total,pr.order_date,pr.status,pr.orderexpected_date from profile P  inner join PrOrder Pr on p.id = Pr.user_id";
             using (SqlConnection con = new SqlConnection(constr))
             {
                 using (SqlDataAdapter sda = new SqlDataAdapter(query, con))
@@ -73,7 +73,8 @@ namespace Paionia
             int Id = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Values[0]);
             string shipper = (row.FindControl("newshipper") as DropDownList).Text;
             string status = (row.FindControl("newstatus") as DropDownList).Text;
-            string query = "UPDATE PrOrder SET shipping_method=@shipping_method, status=@status WHERE id=@id";
+            string ordate = (row.FindControl("Calendar1") as TextBox).Text;
+            string query = "UPDATE PrOrder SET shipping_method=@shipping_method, status=@status, orderexpected_date=@ordate WHERE id=@id";
             string constr = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
@@ -82,6 +83,7 @@ namespace Paionia
                     cmd.Parameters.AddWithValue("@id", Id);
                     cmd.Parameters.AddWithValue("@shipping_method", shipper);
                     cmd.Parameters.AddWithValue("@status", status);
+                    cmd.Parameters.AddWithValue("@ordate", ordate);
                     cmd.Connection = con;
                     con.Open();
                     cmd.ExecuteNonQuery();

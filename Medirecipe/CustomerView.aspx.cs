@@ -41,7 +41,7 @@ namespace Medirecipe
             using (SqlConnection con = new SqlConnection(constr))
             {
                 con.Open();
-                SqlCommand cmd = new SqlCommand("select * from profile", con);
+                SqlCommand cmd = new SqlCommand(" select P.fullname,P.email,P.picture,pr.mobile, pr.address, pr.pincode from profile P  inner join PrOrder Pr on p.id = Pr.user_id", con);
                 SqlDataReader dr = cmd.ExecuteReader();
                 if (dr.HasRows == true)
                 {

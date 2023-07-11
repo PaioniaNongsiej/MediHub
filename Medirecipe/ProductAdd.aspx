@@ -191,13 +191,16 @@
                                                         <label>Product Name</label>
                         
                                                           <asp:TextBox ID="product_name"  class="form-control"  runat="server" placeholder="Product name..."></asp:TextBox>   
-                                                       
+                                                        <asp:RequiredFieldValidator ID="pass" runat="server" ControlToValidate="product_name" ErrorMessage="Please enter a product name"   
+                                                            ForeColor="Red"></asp:RequiredFieldValidator>  
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
                                                         <label>Caption</label>
                                                         <asp:TextBox ID="s_des" runat="server" class="form-control"  placeholder="short line about the product"></asp:TextBox>
+                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="s_des" ErrorMessage="Please enter a caption"   
+                                                            ForeColor="Red"></asp:RequiredFieldValidator>  
                                                     </div>
                                                 </div>
                                             </div>
@@ -205,7 +208,9 @@
                                              <div class="mb-3">
                                               <label>Product Description</label>
                                           <asp:TextBox id="long_des" runat="server" class="form-control"  placeholder="detail description" TextMode="MultiLine"></asp:TextBox>
-                                            </div>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="long_des" ErrorMessage="Please enter a product description"   
+                                                            ForeColor="Red"></asp:RequiredFieldValidator>  
+                                             </div>
                  
      <!-- product image -->
     <div class="product_info">
@@ -223,6 +228,8 @@
                                     <br/>
                                     <label class="custom-file-label">  
                                     <asp:FileUpload ID="first_file_upload_btn" runat="server" class="form-control"  onchange="ShowImagePreview(this);" />  
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="first_file_upload_btn" ErrorMessage="Please enter a product image"   
+                                                            ForeColor="Red"></asp:RequiredFieldValidator>  
                                     </label>  
                                 </div>  
                             </div>  
@@ -236,7 +243,8 @@
                                                         <label>Actual Price</label>
                         
                                                          <asp:TextBox ID="actual_price" class="form-control"  runat="server" type="number" placeholder="actual price"></asp:TextBox>   
-                                                       
+                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="actual_price" ErrorMessage="Please enter the actual price"   
+                                                            ForeColor="Red"></asp:RequiredFieldValidator>  
                                                     </div>
                                                 </div>
                                                 
@@ -245,7 +253,9 @@
                                                     <div class="mb-3">
                                                         <label>Selling Price</label>
                                                         <asp:TextBox ID="sell_price" class="form-control" runat="server" type="number" placeholder="selling price"></asp:TextBox>
-                                                    </div>
+                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="sell_price" ErrorMessage="Please enter the selling price"   
+                                                            ForeColor="Red"></asp:RequiredFieldValidator>  
+                                                        </div>
                                                 </div>
                                        </div>
                                        
@@ -256,6 +266,8 @@
                                                    <asp:DropDownList ID="category_ID" class="form-select" runat="server">
                                                
                                                    </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="category_ID" ErrorMessage="Please select a category"   
+                                                            ForeColor="Red"></asp:RequiredFieldValidator>
                                             </div>
                                             </div>
 

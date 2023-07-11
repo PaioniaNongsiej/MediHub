@@ -355,6 +355,17 @@
                                                                     </EditItemTemplate>
 							                                          <HeaderStyle CssClass="bg-primary" />
                                                                 </asp:TemplateField>
+
+                                                                <asp:TemplateField HeaderText="Delivery Date" ItemStyle-Width="150">
+					                                                <ItemTemplate>
+			                                                            <asp:Label ID="calender" runat="server" Text='<%# Eval("orderexpected_date") %>'></asp:Label>
+			                                                        </ItemTemplate>
+							                                        <EditItemTemplate>
+                                                                        <asp:TextBox ID="Calendar1" type="date" runat="server" Text='<%# Eval("orderexpected_date") %>'></asp:TextBox>
+                                                                    </EditItemTemplate>
+							                                          <HeaderStyle CssClass="bg-primary" />
+                                                                </asp:TemplateField>
+
 						
                                                                 <asp:CommandField  HeaderText="Actions"  ButtonType="Link" ShowEditButton="true" 
                                                                     ItemStyle-Width="150"  EditText="edit" DeleteText="delete"

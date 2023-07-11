@@ -307,7 +307,6 @@
     <Content Include="css\style.css" />
     <Content Include="CustomerView.aspx" />
     <Content Include="Default.aspx" />
-    <Content Include="demoCustomerform.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -402,13 +401,12 @@
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="ShipItem.aspx" />
     <Content Include="ShipperAdd.aspx" />
-    <Content Include="ShipperList.aspx" />
+    <Content Include="ShippersList.aspx" />
     <Content Include="sidepanel.html" />
     <Content Include="SidePanelDark.aspx" />
     <Content Include="SidePanelLight.aspx" />
     <Content Include="Site.Master" />
     <Content Include="CategoryList.aspx" />
-    <Content Include="user\registration.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -458,13 +456,6 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="demoCustomerform.aspx.cs">
-      <DependentUpon>demoCustomerform.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="demoCustomerform.aspx.designer.cs">
-      <DependentUpon>demoCustomerform.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -540,12 +531,12 @@
     <Compile Include="ShipperAdd.aspx.designer.cs">
       <DependentUpon>ShipperAdd.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ShipperList.aspx.cs">
-      <DependentUpon>ShipperList.aspx</DependentUpon>
+    <Compile Include="ShippersList.aspx.cs">
+      <DependentUpon>ShippersList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ShipperList.aspx.designer.cs">
-      <DependentUpon>ShipperList.aspx</DependentUpon>
+    <Compile Include="ShippersList.aspx.designer.cs">
+      <DependentUpon>ShippersList.aspx</DependentUpon>
     </Compile>
     <Compile Include="SidePanelDark.aspx.cs">
       <DependentUpon>SidePanelDark.aspx</DependentUpon>
@@ -582,13 +573,6 @@
     <Compile Include="CategoryList.aspx.designer.cs">
       <DependentUpon>CategoryList.aspx</DependentUpon>
     </Compile>
-    <Compile Include="user\registration.aspx.cs">
-      <DependentUpon>registration.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="user\registration.aspx.designer.cs">
-      <DependentUpon>registration.aspx</DependentUpon>
-    </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -603,6 +587,7 @@
     <Folder Include="pictures\product\" />
     <Folder Include="pictures\recipe\" />
     <Folder Include="pictures\shipper\" />
+    <Folder Include="user\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

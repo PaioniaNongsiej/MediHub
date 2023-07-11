@@ -191,7 +191,8 @@
                                                         <label>Category Name</label>
                         
                                                            <asp:TextBox ID="category_name" runat="server" placeholder="category name"  class="form-control" ></asp:TextBox>   
-                                                       
+                                                       <asp:RequiredFieldValidator ID="pass" runat="server" ControlToValidate="category_name" ErrorMessage="Please enter a category name"   
+                                                            ForeColor="Red"></asp:RequiredFieldValidator>  
                                                     </div>
                                             </div>   
                  

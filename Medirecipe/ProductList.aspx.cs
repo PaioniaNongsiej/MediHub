@@ -159,9 +159,9 @@ namespace Medirecipe
             Label lblDeleteCaption = (Label)row.FindControl("lblcaption");
             Label lblDeleteDesc = (Label)row.FindControl("lbldes");
             Label lblDeleteAprice = (Label)row.FindControl("lblAprice");
-            Label lblDeletediscount = (Label)row.FindControl("lbldiscount");
+            //Label lblDeletediscount = (Label)row.FindControl("lbldiscount");
             Label lblDeleteSprice = (Label)row.FindControl("lblSprice");
-            Label lblDeleteStock = (Label)row.FindControl("lblstock");
+            //Label lblDeleteStock = (Label)row.FindControl("lblstock");
             con = new SqlConnection(constr);
             con.Open();
             SqlCommand cmd = new SqlCommand("delete FROM category where product_id='" + Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value.ToString()) + "'", con);

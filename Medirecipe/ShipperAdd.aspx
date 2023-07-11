@@ -191,16 +191,22 @@
                                                     <div class="mb-3">
                                                         <label>Shipper Name</label>
                                                     <asp:TextBox ID="shipper_name" runat="server" placeholder="shipper name..." class="form-control" ></asp:TextBox>      
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="shipper_name" ErrorMessage="Please enter a Shipper"   
+                                                            ForeColor="Red"></asp:RequiredFieldValidator>
                                                     </div>
 
                                                 <div class="mb-3">
                                                         <label>Shipping Price</label>
-                                                    <asp:TextBox ID="shipping_price" TextMode="Number" runat="server" placeholder="shipping charge..."  class="form-control"></asp:TextBox>
-                                                    </div>
+                                                    <asp:TextBox ID="shipping_price" TextMode="Number" runat="server" placeholder="standard shipping charge..."  class="form-control"></asp:TextBox>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="shipping_price" ErrorMessage="Please enter the standard shipping price"   
+                                                            ForeColor="Red"></asp:RequiredFieldValidator>    
+                                                </div>
                                                 <div class="mb-3">
                                                         <label>Description</label>
                                                     <asp:TextBox ID="description" runat="server" placeholder="Description..."  class="form-control"></asp:TextBox>
-                                                    </div>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="description" ErrorMessage="Please enter a short description"   
+                                                            ForeColor="Red"></asp:RequiredFieldValidator> 
+                                                </div>
                                             </div>   
                                             
                                             <!-- product image -->
@@ -219,6 +225,8 @@
                                     <br/>
                                     <label class="custom-file-label">  
                                     <asp:FileUpload ID="first_file_upload_btn" runat="server" class="form-control"  onchange="ShowImagePreview(this);" />  
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="first_file_upload_btn" ErrorMessage="Please enter the shipper logo"   
+                                                            ForeColor="Red"></asp:RequiredFieldValidator> 
                                     </label>  
                                 </div>  
                             </div>  
